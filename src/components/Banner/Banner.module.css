@@ -1,0 +1,99 @@
+.banner__container {
+  position: relative;
+}
+.banner__img {
+  display: block;
+  width: 100%;
+}
+.title__text {
+  position: absolute;
+  bottom: 40%;
+  left: 5%;
+}
+.title__text h2 {
+  font-size: 50px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 70px;
+}
+.arrow__button {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+.arrow__button span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+  transform: rotate(45deg);
+  margin: -10px;
+  -webkit-animation: arrow 2s infinite;
+  animation: animate 2s infinite;
+}
+.arrow__button span:nth-child(2) {
+  animation-delay: -0.2s;
+  -webkit-animation-delay: -0.2s;
+}
+.arrow__button span:nth-child(3) {
+  animation-delay: -0.4s;
+  -webkit-animation-delay: -0.4s;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-20px, -20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(20px, 20px);
+  }
+}
+
+@media only screen and (max-width: 650px) and (min-width: 300px) {
+  .title__text {
+    bottom: 25%;
+    left: 5%;
+  }
+  .title__text h2 {
+    font-size: 30px;
+    line-height: normal;
+  }
+  .arrow__button span {
+    width: 15px;
+    height: 15px;
+  }
+}
+@media only screen and (max-width: 950px) and (min-width: 651px) {
+  .title__text {
+    bottom: 30%;
+    left: 5%;
+  }
+  .title__text h2 {
+    font-size: 50px;
+    line-height: normal;
+  }
+  .arrow__button span {
+    width: 20px;
+    height: 20px;
+  }
+}
+.svg__block__1__up {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wave__white__up,
+.wave__white__down {
+  fill: #ffffff;
+}

@@ -1,0 +1,30 @@
+.paragraph__six__image img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.paragraph__six__container {
+  padding-bottom: 4rem;
+  margin-top: 5rem;
+  position: relative;
+}
+/*.paragraph__six__contents {
+  z-index: 1;
+  height: 100%;
+  flex-flow: column;
+  display: flex;
+  position: absolute;
+  top: 0;
+}*/
+.paragraph__six__contents h3 {
+  width: 100%;
+  font-weight: bold;
+  line-height: 1.8rem;
+  color: #fff;
+  font-size: 1.8rem;
+}
+.paragraph__six__title {
+  position: absolute;
+  bottom: 0;
+  margin: 2.5rem;
+}

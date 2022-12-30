@@ -1,0 +1,51 @@
+.paragraph__three__image img {
+  width: 100%;
+  border-radius: 8px;
+}
+.card__image__container {
+  position: relative;
+}
+.paragraph__three__contents {
+  z-index: 1;
+  height: 100%;
+  flex-flow: column;
+  display: flex;
+  position: absolute;
+  top: 0;
+}
+.paragraph__three__contents h3 {
+  width: 100%;
+  font-weight: bold;
+  line-height: 1.8rem;
+  color: #fff;
+  font-size: 1.8rem;
+}
+.paragraph__three__title {
+  position: absolute;
+  bottom: 0;
+  margin: 2.5rem;
+}
+
+.card__btn__area {
+  margin: 1.5rem;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 20px 20px;
+  border-radius: 50px;
+  background: #fff;
+  color: #a2bb0c;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.paragraph__three__container {
+  width: 30%;
+  padding-bottom: 4rem;
+}
+
+.swiper-slide:nth-child(even) {
+  margin-top: 20px;
+}
