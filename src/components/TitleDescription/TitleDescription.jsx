@@ -1,33 +1,21 @@
 import React from "react";
-import axios from "axios";
 import { useState, useEffect } from "react";
+import { getTitleDescriptionData } from "../../api/getData";
+import { CONTENT_COMPONENT_WITH_TITLE } from "../../constants/componentTypes";
 import styles from "../TitleDescription/TitleDescription.module.css";
 
 function TitleDescription({componentID}) {
+  const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [isError, setIsError] = useState("");
 
-  const getApiData = async () => {
-    try {
-      const response = await axios.get(
-        `https://dev-innoways.managedcoder.com/jsonapi/paragraph/content_component_with_title_and/${componentID}/`
-      );
-
-      setTitle(response.data.data.attributes.field_component_title);
-      setDescription(response.data.data.attributes.field_component_description);
-      console.log(response.data.data.attributes);
-    } catch (error) {
-      setIsError(error.message);
-    }
-  };
   useEffect(() => {
-    getApiData();
-  }, []);
+    getTitleDescriptionData(setTitle, setDescription, CONTENT_COMPONENT_WITH_TITLE, componentID, setLoading);
+  });
 
   return (
     <>
-      {isError !== "" && <h2 className="text-center">{isError}</h2>}
+      {loading ? null : (
       <div className={`container-fluid ${styles.description__container}`}>
         <div className="row">
           <div className="col-md-7">
@@ -35,7 +23,7 @@ function TitleDescription({componentID}) {
             <p>{description}</p>
           </div>
         </div>
-      </div>
+      </div>)}
     </>
   );
 }

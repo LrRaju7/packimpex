@@ -1,68 +1,149 @@
 import React from "react";
-import axios from "axios";
+import Modal from "react-modal";
 import { useState, useEffect } from "react";
+import { getImageTextLeftRightData } from "../../api/getData";
+import { TWO_COLUMN_COMPONENT_YEAR_TITLE } from "../../constants/componentTypes";
 import styles from "../ImageTextLeftRight/ImageTextLeftRight.module.css";
 
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor: "white",
+    width: "55%",
+    textAlign: "center",
+  },
+};
+
 function ImageTextLeftRight({componentID}) {
+  const [loading, setLoading] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
   const [year, setYear] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [link, setLink] = useState("");
+  const [link, setLink] = useState(null);
   const [position, setPosition] = useState("");
   const [image, setImage] = useState("");
-  const [isError, setIsError] = useState("");
+  const [imageAlt, setImageAlt] = useState(null);
 
-  const getApiData = async () => {
-    try {
-      const response = await axios.get(
-        "https://dev-innoways.managedcoder.com/jsonapi/paragraph/two_column_component_year_title_/0fce1258-91cb-4f12-99df-e2cee6611d29"
-      );
-      const response2 = await axios.get(
-        "https://dev-innoways.managedcoder.com/jsonapi/file/file/d6b7edf5-c581-452d-8e4e-effd713b0ca9"
-      );
-
-      setYear(response.data.data.attributes.field_year);
-      setTitle(response.data.data.attributes.field_title_2);
-      setDescription(response.data.data.attributes.field_description_2.value);
-      setLink(response.data.data.attributes.field_cta_button);
-      setPosition(response.data.data.attributes.field_image_position);
-      setImage(
-        "https://dev-innoways.managedcoder.com/" +
-          response2.data.data.attributes.uri.url
-      );
-      console.log(response.data.data);
-    } catch (error) {
-      setIsError(error.message);
-    }
-  };
   useEffect(() => {
-    getApiData();
-  }, []);
+    getImageTextLeftRightData(setYear, setTitle,setDescription,setPosition, setImage, setImageAlt, setLink, TWO_COLUMN_COMPONENT_YEAR_TITLE, componentID, setLoading);
+  });
 
   return (
     <>
-      {isError !== "" && <h2 className="text-center">{isError}</h2>}
-      <div
-        className={`container-fluid ${styles.imagetextleftright__container}`}
-      >
-        <div className="row align-items-center">
-          <div className="col-md-6">
-            <span className={styles.year}>{year}</span>
-            <h2>{title}</h2>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: description,
-              }}
-            />
-            <p>{link}</p>
-            {/* <p>{position}</p> */}
-          </div>
+      {loading ? null : (
+        <>
+        {position === "right" ? (
+          <div
+            className={`container-fluid ${styles.imagetextleftright__container}`}
+          >
+            <div className="row align-items-center">
+              <div className="col-md-6">
+                <span className={styles.year}>{year}</span>
+                <h2>{title}</h2>
+                {link !== null ? (
+                  <>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: description.substring(0, 100) + "...",
+                      }}
+                    />
+                    <button className="btn__green">{link}</button>
+                  </>
+                ) : (
+                  <>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: description,
+                      }}
+                    />
+                  </>
+                )}
+              </div>
 
-          <div className="col-md-6">
-            <img className={styles.style__img} src={image} />
+              <div className="col-md-6">
+                <img className={styles.style__img} src={image} alt={imageAlt}/>
+              </div>
+              <Modal
+                isOpen={modalOpen}
+                onRequestClose={() => setModalOpen(false)}
+                style={styles.customStyles}
+              >
+                <div className={styles.close__button}>
+                  <button onClick={() => setModalOpen(false)}>&#10005;</button>
+                </div>
+                <span className={styles.year}>{year}</span>
+                <br />
+                <h2 className="text-center">{title}</h2>
+                <br />
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: description,
+                  }}
+                />
+              </Modal>
+            </div>
           </div>
-        </div>
-      </div>
+        ) : (
+          <div
+            className={`container-fluid ${styles.imagetextleftright__container}`}
+          >
+            <div className="row align-items-center">
+              <div className="col-md-6">
+                <img className={styles.style__img} src={image} alt={imageAlt}/>
+              </div>
+              <div className="col-md-6">
+                <span className={styles.year}>{year}</span>
+                <h2>{title}</h2>
+                {link !== null ? (
+                  <>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: description.substring(0, 100) + "...",
+                      }}
+                    />
+                    <button onClick={setModalOpen} className="btn__green">
+                      {link}
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: description,
+                      }}
+                    />
+                  </>
+                )}
+              </div>
+              <Modal
+                isOpen={modalOpen}
+                onRequestClose={() => setModalOpen(false)}
+                style={customStyles}
+              >
+                <div className={styles.close__button}>
+                  <button onClick={() => setModalOpen(false)}>&#10005;</button>
+                </div>
+                <span className={styles.year}>{year}</span>
+                <br />
+                <h2 className="text-center">{title}</h2>
+                <br />
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: description,
+                  }}
+                />
+              </Modal>
+            </div>
+          </div>
+        )}
+        </>
+      )}
     </>
   );
 }
