@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import { getPageComponents } from "../../api/getData";
-import { BANNER_WITH_TITLE_IMAGE, CONTENT_COMPONENT_WITH_IMAGE_TIT } from "../../constants/componentTypes"
+import { BANNER_WITH_TITLE_IMAGE, CONTENT_COMPONENT_WITH_IMAGE_TITLE, TWO_COLUMN_COMPONENT_YEAR_TITLE, CONTENT_COMPONENT_WITH_TITLE } from "../../constants/componentTypes"
 import Banner from "../../components/Banner/Banner";
 import ParagraphTwo from '../../components/ParagraphTwo/ParagraphTwo';
+import ImageTextLeftRight from '../../components/ImageTextLeftRight/ImageTextLeftRight';
+import TitleDescription from '../../components/TitleDescription/TitleDescription';
 
 const Page = ({ locator, pageID }) => {
   const [loading, setLoading] = useState(true);
@@ -30,7 +32,7 @@ const Page = ({ locator, pageID }) => {
                         />
                       ))
                     ||
-                      (data.type.match(CONTENT_COMPONENT_WITH_IMAGE_TIT) && (
+                      (data.type.match(CONTENT_COMPONENT_WITH_IMAGE_TITLE) && (
                         <ParagraphTwo
                           componentID={
                             data.id
@@ -38,6 +40,22 @@ const Page = ({ locator, pageID }) => {
                         />
                       ))
                     ||
+                    (data.type.match(TWO_COLUMN_COMPONENT_YEAR_TITLE) && (
+                      <ImageTextLeftRight
+                        componentID={
+                          data.id
+                        }
+                      />
+                    ))
+                  ||
+                  (data.type.match(CONTENT_COMPONENT_WITH_TITLE) && (
+                    <TitleDescription
+                      componentID={
+                        data.id
+                      }
+                    />
+                  ))
+                ||
                       <h1 className='text-center'>COMPONENT IS UNDER DEVELOPMENT</h1>
                         }
                         

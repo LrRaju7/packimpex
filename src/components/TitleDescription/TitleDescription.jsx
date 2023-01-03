@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import styles from "../TitleDescription/TitleDescription.module.css";
 
-function TitleDescription() {
+function TitleDescription({componentID}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isError, setIsError] = useState("");
@@ -11,7 +11,7 @@ function TitleDescription() {
   const getApiData = async () => {
     try {
       const response = await axios.get(
-        "https://dev-innoways.managedcoder.com/jsonapi/paragraph/content_component_with_title_and/781d799b-0133-4f2f-93f8-f54ff6b1788c/"
+        `https://dev-innoways.managedcoder.com/jsonapi/paragraph/content_component_with_title_and/${componentID}/`
       );
 
       setTitle(response.data.data.attributes.field_component_title);

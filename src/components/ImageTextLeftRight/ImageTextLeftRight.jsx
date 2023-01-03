@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import styles from "../ImageTextLeftRight/ImageTextLeftRight.module.css";
 
-function ImageTextLeftRight() {
+function ImageTextLeftRight({componentID}) {
   const [year, setYear] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
