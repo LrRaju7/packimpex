@@ -21,6 +21,7 @@
   top: 70%;
   left: 50%;
   transform: translate(-50%, 50%);
+  cursor: pointer;
 }
 .arrow__button span {
   display: block;
@@ -92,8 +93,6 @@
   margin: 0;
   padding: 0;
 }
-
-.wave__white__up,
-.wave__white__down {
-  fill: #ffffff;
+.svg__block__1__up svg {
+  fill: #ffff;
 }

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import styles from "../ParagraphTwo/ParagraphTwo.module.css";
+import styles from "../BannerWithTitleDescButton/BannerWithTitleDescButton.module.css";
 import axios from "axios";
 import Image from "./Image";
-const ParagraphTwo = () => {
+
+const BannerWithTitleDescButton = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -19,15 +20,15 @@ const ParagraphTwo = () => {
     fetchData();
   }, []);
   if (data === null) {
-    return <h1> loading </h1>;
+    return <></>;
   }
   return (
-    <div className={`container ${styles.paragraphTwo}`}>
+    <div className={`container ${styles.banner__area}`}>
       <div className={`row`}>
-        <div className={`col-md-12 ${styles.paragraphTwo__container}`}>
+        <div className={`col-md-12 ${styles.banner__container}`}>
           <div className="col-lg-9 col-md-12">
             <h2>{data.data.attributes.field_content_title}</h2>
-            <div className={` ${styles.paragraphTwo__content}`}>
+            <div className={` ${styles.banner__content}`}>
               <p
                 dangerouslySetInnerHTML={{
                   __html: data.data.attributes.field_description.processed,
@@ -47,4 +48,4 @@ const ParagraphTwo = () => {
     </div>
   );
 };
-export default ParagraphTwo;
+export default BannerWithTitleDescButton;

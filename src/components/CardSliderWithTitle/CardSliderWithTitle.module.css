@@ -1,0 +1,26 @@
+.cardSlider__title h3 {
+  font-size: 88px;
+  font-weight: bold;
+  color: #363635;
+  padding-bottom: 20px;
+  line-height: 80px;
+  text-align: center;
+}
+
+/* ==== MEDIA QUERIES (SMALL DEVICES) ==== */
+
+@media screen and (max-width: 768px) {
+  .cardSlider__title h3 {
+    font-size: 48px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .cardSlider__title h3 {
+    font-size: 28px;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 769px) {
+  .cardSlider__title h3 {
+    font-size: 48px;
+  }
+}

@@ -1,36 +1,42 @@
-.paragraph__three__image img {
+.cardSlider__container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.cardSlider__image {
+  position: relative;
+}
+.cardSlider__image img {
   width: 100%;
   border-radius: 8px;
 }
-.card__image__container {
-  position: relative;
+.cardSlider__top__area {
+  position: absolute;
+  top: 0;
+  margin: 1.25rem;
 }
-.paragraph__three__contents {
+.cardSlider__contents {
   z-index: 1;
   height: 100%;
+  width: 100%;
   flex-flow: column;
   display: flex;
   position: absolute;
   top: 0;
 }
-.paragraph__three__contents h3 {
-  width: 100%;
+.cardSlider__contents h4 {
+  max-width: 100%;
   font-weight: bold;
   line-height: 1.8rem;
   color: #fff;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }
-.paragraph__three__title {
+.cardSlider__title {
   position: absolute;
   bottom: 0;
-  margin: 2.5rem;
+  margin: 2rem;
 }
 
-.card__btn__area {
-  margin: 1.5rem;
-}
-
-button {
+.cardSlider__contents button {
   padding: 10px 15px;
   margin: 20px 20px;
   border-radius: 50px;
@@ -41,11 +47,6 @@ button {
   font-weight: bold;
 }
 
-.paragraph__three__container {
-  width: 30%;
-  padding-bottom: 4rem;
-}
-
 .swiper-slide:nth-child(even) {
-  margin-top: 20px;
+  margin-top: 20px !important;
 }

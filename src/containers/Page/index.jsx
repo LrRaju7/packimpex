@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { getPageComponents } from "../../api/getData";
-import { BANNER_WITH_TITLE_IMAGE, CONTENT_COMPONENT_WITH_IMAGE_TITLE, TWO_COLUMN_COMPONENT_YEAR_TITLE, CONTENT_COMPONENT_WITH_TITLE } from "../../constants/componentTypes"
-import Banner from "../../components/Banner/Banner";
-import ParagraphTwo from '../../components/ParagraphTwo/ParagraphTwo';
-import ImageTextLeftRight from '../../components/ImageTextLeftRight/ImageTextLeftRight';
-import TitleDescription from '../../components/TitleDescription/TitleDescription';
+import { BANNER_WITH_TITLE_IMAGE, CONTENT_COMPONENT_WITH_IMAGE_TITLE, TWO_COLUMN_COMPONENT_YEAR_TITLE, CONTENT_COMPONENT_WITH_TITLE, CONTENT_COMPONENT_FOUR_CARD, CARD_COMPONENT_WITH_TITLE_IMAGE } from "../../constants/componentTypes"
+import Banner from '../../components/Banner/Banner'
+import BannerWithTitleDescButton from '../../components/BannerWithTitleDescButton/BannerWithTitleDescButton'
+import TitleDescription from '../../components/TitleDescription/TitleDescription'
+import CardSliderWithTitle from '../../components/CardSliderWithTitle/CardSliderWithTitle'
+import TriCardWithDesc from '../../components/TriCardWithDesc/TriCardWithDesc'
+import ImageTextLeftRight from '../../components/ImageTextLeftRight/ImageTextLeftRight'
 
 const Page = ({ locator, pageID }) => {
   const [loading, setLoading] = useState(true);
@@ -33,7 +35,7 @@ const Page = ({ locator, pageID }) => {
                     ))
                     ||
                     (data.type.match(CONTENT_COMPONENT_WITH_IMAGE_TITLE) && (
-                      <ParagraphTwo
+                      <BannerWithTitleDescButton
                         componentID={
                           data.id
                         }
@@ -50,6 +52,22 @@ const Page = ({ locator, pageID }) => {
                     ||
                     (data.type.match(CONTENT_COMPONENT_WITH_TITLE) && (
                       <TitleDescription
+                        componentID={
+                          data.id
+                        }
+                      />
+                    ))
+                    ||
+                    (data.type.match(CONTENT_COMPONENT_FOUR_CARD) && (
+                      <CardSliderWithTitle
+                        componentID={
+                          data.id
+                        }
+                      />
+                    ))
+                    ||
+                    (data.type.match(CARD_COMPONENT_WITH_TITLE_IMAGE) && (
+                      <TriCardWithDesc
                         componentID={
                           data.id
                         }
