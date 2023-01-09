@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Helmet from "react-helmet";
 import { getPageComponents } from "../../api/getData";
 import { BANNER_WITH_TITLE_IMAGE, CONTENT_COMPONENT_WITH_IMAGE_TITLE, TWO_COLUMN_COMPONENT_YEAR_TITLE, CONTENT_COMPONENT_WITH_TITLE, CONTENT_COMPONENT_FOUR_CARD, CARD_COMPONENT_WITH_TITLE_IMAGE } from "../../constants/componentTypes"
 import Banner from '../../components/Banner/Banner'
@@ -11,16 +12,39 @@ import ImageTextLeftRight from '../../components/ImageTextLeftRight/ImageTextLef
 const Page = ({ locator, pageID }) => {
   const [loading, setLoading] = useState(true);
   const [pageData, setPageData] = useState(null);
+  const [pageAttributes, setPageAttributes] = useState(null);
 
   useEffect(() => {
     setLoading(true);
     setPageData(null);
-    getPageComponents(pageID, setPageData, setLoading);
+    getPageComponents(pageID, setPageData, setPageAttributes, setLoading);
   }, [locator, pageID]);
   return (
     <>
       {loading ? null : (
         <>
+          {pageAttributes !== null ? (
+            <Helmet>
+            <meta charSet="utf-8" />
+            <title>
+              {pageAttributes.field_page_meta_tags?.meta_title || pageAttributes.title} | Packimpex
+            </title>
+            <meta
+              name="title"
+              content={pageAttributes.field_page_meta_tags?.meta_title || pageAttributes.title}
+            ></meta>
+            <meta name="description" content={pageAttributes.field_page_description} />
+            <meta property="og:type" content="website" />
+            <meta
+              property="og:title"
+              content={pageAttributes.field_page_meta_tags?.meta_title || pageAttributes.title}
+            />
+            <meta
+              property="og:description"
+              content={pageAttributes.field_page_description}
+            />
+          </Helmet>
+          ): null}
           {pageData.data.length > 0 ? (
             <>
               {pageData.data.map((data) => {

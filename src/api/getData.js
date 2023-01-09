@@ -17,6 +17,12 @@ export const getBannerComponentData = async (setBannerData,setImage,setImageAlt,
   setLoading(false);
 };
 
+export const getSvgImageData = async (setSvg, componentType, componentID, setLoading) => {
+  const result = await axios.get(DRUPAL_API_ENDPOINT+FETCH_SPECIFIC_COMPONENT+componentType+'/'+componentID);
+  setSvg(result.data.data.attributes.field_svg_code.value);
+  setLoading(false);
+};
+
 export const getImageTextLeftRightData = async (setYear, setTitle,setDescription,setPosition, setImage, setImageAlt, setLink, componentType, componentID, setLoading) => {
   const result = await axios.get(DRUPAL_API_ENDPOINT+FETCH_SPECIFIC_COMPONENT+componentType+'/'+componentID);
   setYear(result.data.data.attributes.field_year);
@@ -40,8 +46,9 @@ export const getTitleDescriptionData = async (setTitle, setDescription, componen
   setLoading(false);
 };
 
-export const getPageComponents = async (pageID,setPageData,setLoading) => {
+export const getPageComponents = async (pageID,setPageData,setPageAttributes,setLoading) => {
   const result = await axios.get(DRUPAL_API_ENDPOINT+FETCH_ALL_URLS+pageID);
   setPageData(result.data.data.relationships.field_web_page_sections);
+  setPageAttributes(result.data.data.attributes);
   setLoading(false);
 };
