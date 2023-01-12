@@ -7,20 +7,25 @@
 }
 .title__text {
   position: absolute;
-  bottom: 40%;
+  bottom: 37%;
   left: 5%;
 }
 .title__text h2 {
-  font-size: 50px;
+  font-size: 88px;
   color: #fff;
   font-weight: bold;
-  line-height: 70px;
+  line-height: 100px;
 }
 .arrow__button {
   position: absolute;
-  top: 70%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, 50%);
+}
+.arrowTransform {
+  position: absolute;
+  left: 50%;
+  bottom: 23%;
   cursor: pointer;
 }
 .arrow__button span {
@@ -56,35 +61,6 @@
     transform: rotate(45deg) translate(20px, 20px);
   }
 }
-
-@media only screen and (max-width: 650px) and (min-width: 300px) {
-  .title__text {
-    bottom: 25%;
-    left: 5%;
-  }
-  .title__text h2 {
-    font-size: 30px;
-    line-height: normal;
-  }
-  .arrow__button span {
-    width: 15px;
-    height: 15px;
-  }
-}
-@media only screen and (max-width: 950px) and (min-width: 651px) {
-  .title__text {
-    bottom: 30%;
-    left: 5%;
-  }
-  .title__text h2 {
-    font-size: 50px;
-    line-height: normal;
-  }
-  .arrow__button span {
-    width: 20px;
-    height: 20px;
-  }
-}
 .svg__block__1__up {
   position: absolute;
   bottom: 0;
@@ -95,4 +71,45 @@
 }
 .svg__block__1__up svg {
   fill: #ffff;
+}
+
+@media (max-width: 1400px) and (min-width: 992px) {
+  .arrowTransform {
+    bottom: 30%;
+  }
+}
+@media (max-width: 570px) {
+  .title__text h2 {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+@media (min-width: 571px) and (max-width: 992px) {
+  .title__text h2 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+}
+@media (min-width: 1118px) and (max-width: 1600px) {
+  .title__text h2 {
+    font-size: 55px;
+    line-height: 70px;
+  }
+}
+@media (max-width: 1117px) and (min-width: 769px) {
+  .title__text h2 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+}
+@media (max-width: 992px) {
+  .arrowTransform {
+    display: none;
+  }
+}
+@media (max-width: 1400px) and (min-width: 992px) {
+  .arrow__button span {
+    width: 28px;
+    height: 28px;
+  }
 }

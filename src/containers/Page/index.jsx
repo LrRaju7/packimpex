@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import Helmet from "react-helmet";
 import { getPageComponents } from "../../api/getData";
-import { BANNER_WITH_TITLE_IMAGE, CONTENT_COMPONENT_WITH_IMAGE_TITLE, TWO_COLUMN_COMPONENT_YEAR_TITLE, CONTENT_COMPONENT_WITH_TITLE, CONTENT_COMPONENT_FOUR_CARD, CARD_COMPONENT_WITH_TITLE_IMAGE } from "../../constants/componentTypes"
-import Banner from '../../components/Banner/Banner'
-import BannerWithTitleDescButton from '../../components/BannerWithTitleDescButton/BannerWithTitleDescButton'
-import TitleDescription from '../../components/TitleDescription/TitleDescription'
-import CardSliderWithTitle from '../../components/CardSliderWithTitle/CardSliderWithTitle'
-import TriCardWithDesc from '../../components/TriCardWithDesc/TriCardWithDesc'
-import ImageTextLeftRight from '../../components/ImageTextLeftRight/ImageTextLeftRight'
+import {
+  BANNER_WITH_TITLE_IMAGE,
+  CONTENT_COMPONENT_WITH_IMAGE_TITLE,
+  TWO_COLUMN_COMPONENT_YEAR_TITLE,
+  CONTENT_COMPONENT_WITH_TITLE,
+  CONTENT_COMPONENT_FOUR_CARD,
+  THREE_CARD_COMPONENT_WITH_TITLE,
+  THREE_CARD_COMPONENT_WITH_KICKER,
+} from "../../constants/componentTypes";
+import Banner from "../../components/Banner/Banner";
+import BannerWithTitleDescButton from "../../components/BannerWithTitleDescButton/BannerWithTitleDescButton";
+import TitleDescription from "../../components/TitleDescription/TitleDescription";
+import CardSliderWithTitle from "../../components/CardSliderWithTitle/CardSliderWithTitle";
+import ZigzagHexaCards from "../../components/ZigzagHexaCards/ZigzagHexaCards";
+import ImageTextLeftRight from "../../components/ImageTextLeftRight/ImageTextLeftRight";
+import ZigzagTriCard from '../../components/ZigzagTriCard/ZigzagTriCard';
 
 const Page = ({ locator, pageID }) => {
   const [loading, setLoading] = useState(true);
@@ -51,73 +60,39 @@ const Page = ({ locator, pageID }) => {
                 return (
                   <>
                     {(data.type.match(BANNER_WITH_TITLE_IMAGE) && (
-                      <Banner
-                        componentID={
-                          data.id
-                        }
-                      />
-                    ))
-                    ||
-                    (data.type.match(CONTENT_COMPONENT_WITH_IMAGE_TITLE) && (
-                      <BannerWithTitleDescButton
-                        componentID={
-                          data.id
-                        }
-                      />
-                    ))
-                    ||
-                    (data.type.match(TWO_COLUMN_COMPONENT_YEAR_TITLE) && (
-                      <ImageTextLeftRight
-                        componentID={
-                          data.id
-                        }
-                      />
-                    ))
-                    ||
-                    (data.type.match(CONTENT_COMPONENT_WITH_TITLE) && (
-                      <TitleDescription
-                        componentID={
-                          data.id
-                        }
-                      />
-                    ))
-                    ||
-                    (data.type.match(CONTENT_COMPONENT_FOUR_CARD) && (
-                      <CardSliderWithTitle
-                        componentID={
-                          data.id
-                        }
-                      />
-                    ))
-                    ||
-                    (data.type.match(CARD_COMPONENT_WITH_TITLE_IMAGE) && (
-                      <TriCardWithDesc
-                        componentID={
-                          data.id
-                        }
-                      />
-                    ))
-                    ||
-                    <h1 className='text-center'>COMPONENT IS UNDER DEVELOPMENT</h1>
-                    }
-
+                      <Banner componentID={data.id} />
+                    )) ||
+                      (data.type.match(CONTENT_COMPONENT_WITH_IMAGE_TITLE) && (
+                        <BannerWithTitleDescButton componentID={data.id} />
+                      )) ||
+                      (data.type.match(TWO_COLUMN_COMPONENT_YEAR_TITLE) && (
+                        <ImageTextLeftRight componentID={data.id} />
+                      )) ||
+                      (data.type.match(CONTENT_COMPONENT_WITH_TITLE) && (
+                        <TitleDescription componentID={data.id} />
+                      )) ||
+                      (data.type.match(CONTENT_COMPONENT_FOUR_CARD) && (
+                        <CardSliderWithTitle componentID={data.id} />
+                      )) ||
+                      (data.type.match(THREE_CARD_COMPONENT_WITH_KICKER) && (
+                        <ZigzagHexaCards componentID={data.id} />
+                      )) || (data.type.match(THREE_CARD_COMPONENT_WITH_TITLE) && (
+                        <ZigzagTriCard componentID={data.id} />
+                      )) || (
+                        <h1 className="text-center">
+                          COMPONENT IS UNDER DEVELOPMENT
+                        </h1>
+                      )}
                   </>
                 );
               })}
-              {locator === "/" ? (
-                <></>
-              ) : null}
-
+              {locator === "/" ? <></> : null}
             </>
-          ) : (
+            ) : (
             <h1 className="text-center p-5">CONTENT NOT FOUND</h1>
           )}
         </>
       )}
-
-
-
-
     </>
   );
 };

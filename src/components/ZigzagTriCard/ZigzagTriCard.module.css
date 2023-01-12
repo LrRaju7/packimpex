@@ -1,0 +1,85 @@
+.zigzagCard__area {
+  padding: 80px 0;
+  background-color: #f6f6f6;
+}
+
+.zigzagCard__container h3 {
+  font-size: 88px;
+  font-weight: bold;
+  color: #363635;
+  padding-bottom: 30px;
+  text-align: center;
+  line-height: 98px;
+}
+.single__zigzag__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+.single__triCard__image {
+  position: relative;
+}
+.single__triCard__image img {
+  width: 100%;
+  border-radius: 8px;
+}
+.single__triCard__top {
+  position: absolute;
+  top: 0;
+  margin: 1.25rem;
+}
+.single__triCard__contents {
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  flex-flow: column;
+  display: flex;
+  position: absolute;
+  bottom: 15px;
+}
+.single__triCard__contents h4 {
+  max-width: 100%;
+  font-weight: bold;
+  line-height: 1.8rem;
+  color: #fff;
+  font-size: 1.6rem;
+}
+.single__triCard__title {
+  position: absolute;
+  bottom: 0;
+  margin: 2rem;
+}
+
+/* ==== MEDIA QUERIES (SMALL DEVICES) ==== */
+
+@media screen and (max-width: 1024px) {
+  .card__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+  .cardWithTitleImageDescButton__container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .zigzagCard__container h3 {
+    font-size: 48px !important;
+    line-height: 45px !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card__container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .cardWithTitleImageDescButton__container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .single__zigzag__container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

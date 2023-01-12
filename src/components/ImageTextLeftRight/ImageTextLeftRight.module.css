@@ -26,3 +26,7 @@
 .close__button button {
   margin: 0;
 }
+.modal__button {
+  background-color: white;
+  font-size: 12px;
+}

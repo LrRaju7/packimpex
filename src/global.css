@@ -86,6 +86,10 @@ button {
   text-decoration: none;
   color: var(--color-text-white);
 }
+.pxy-100 {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
 /* Button white */
 
 .btn__white {
@@ -118,24 +122,20 @@ button {
   stroke-linejoin: round;
   stroke-miterlimit: 10;
 }
-
 .steps .svg_arrow .line {
   stroke-dasharray: 1040;
   stroke-dashoffset: 1040;
   transition: none;
 }
-
 .steps .arrow2 .path2 {
   stroke-dasharray: 1780;
   stroke-dashoffset: 1780;
   transition: none;
 }
-
 .steps .arrow3 .path2-03 {
   stroke-dashoffset: 1780;
   stroke-dasharray: 1780;
 }
-
 .steps .svg_arrow .arrow,
 .steps .svg_arrow .words {
   opacity: 0;
@@ -146,23 +146,23 @@ button {
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 1.5s ease;
 }
-
 .steps li .svg_arrow.visible .words {
   opacity: 1;
   transition: opacity 0.8s ease 0.4s;
 }
-
 .steps li .svg_arrow.visible .arrow {
   opacity: 1;
   transition: opacity 0.5s ease 1.2s;
 }
-
 /* 02 */
-
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 .path {
   fill: none;
 }
-
 .path1-first,
 .path1-03,
 .path1-01,
@@ -176,7 +176,6 @@ button {
   stroke-dasharray: 8;
   enable-background: new;
 }
-
 .path2 {
   stroke: #a2bb0c;
   stroke-width: 3px;
@@ -204,6 +203,15 @@ button {
   stroke-dasharray: 1780;
   stroke-dashoffset: 1780;
   animation: animation3 2s linear forwards;
+}
+.st1 {
+  fill: #a3ba00;
+}
+.st2 {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
 }
 @keyframes animation {
   from {
@@ -237,43 +245,81 @@ button {
     stroke-dashoffset: 0;
   }
 }
-
+.fadeInAnim .svg_arrow .circle,
+.fadeInAnim .svg_arrow .circle animateMotion,
 .fadeInAnim .svg_arrow .path2 {
+  /* opacity: 0; */
   transition: none;
   display: none;
 }
-
+.fadeInAnim .svg_arrow.visible .circle,
+.fadeInAnim .svg_arrow.visible .circle animateMotion {
+  /* opacity: 1;   */
+  display: block;
+}
 .fadeInAnim .svg_arrow.visible .path2 {
+  /* opacity: 1;   */
+  /* animation: animation 3s linear forwards; */
   display: block;
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 1.5s ease;
 }
-
 /* arrow2-first */
+.fadeInAnim .svg_arrow .circle,
+.fadeInAnim .svg_arrow .circle animateMotion,
 .fadeInAnim .svg_arrow .path2-first {
+  /* opacity: 0; */
   transition: none;
   display: none;
 }
-
+.fadeInAnim .svg_arrow.visible .circle,
+.fadeInAnim .svg_arrow.visible .circle animateMotion {
+  /* opacity: 1;   */
+  display: block;
+}
 .fadeInAnim .svg_arrow.visible .path2-first {
+  /* opacity: 1;   */
+  /* animation: animation 3s linear forwards; */
   display: block;
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 1.5s ease;
 }
-
 /* arrow2 */
+.fadeInAnim .svg_arrow .circle,
+.fadeInAnim .svg_arrow .circle animateMotion,
 .fadeInAnim .svg_arrow .path2-02 {
+  /* opacity: 0; */
   transition: none;
   display: none;
 }
-
+.fadeInAnim .svg_arrow.visible .circle,
+.fadeInAnim .svg_arrow.visible .circle animateMotion {
+  /* opacity: 1;   */
+  display: block;
+}
 .fadeInAnim .svg_arrow.visible .path2-02 {
+  /* opacity: 1;   */
+  /* animation: animation 3s linear forwards; */
   display: block;
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 1.5s ease;
 }
-
+/* arrow3 */
+.fadeInAnim .svg_arrow .circle,
+.fadeInAnim .svg_arrow .circle animateMotion,
+.fadeInAnim .svg_arrow .path2-03 {
+  /* opacity: 0; */
+  transition: none;
+  display: none;
+}
+.fadeInAnim .svg_arrow.visible .circle,
+.fadeInAnim .svg_arrow.visible .circle animateMotion {
+  /* opacity: 1;   */
+  display: block;
+}
 .fadeInAnim .svg_arrow.visible .path2-03 {
+  /* opacity: 1;   */
+  /* animation: animation 3s linear forwards; */
   display: block;
   stroke-dashoffset: 0;
   transition: stroke-dashoffset 1.5s ease;
@@ -291,7 +337,6 @@ button {
     padding-left: 48%;
   }
 }
-
 @media (max-width: 1300px) {
   .fadeInAnim .svg_arrow {
     display: none;

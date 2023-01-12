@@ -1,0 +1,17 @@
+.imagetextleft__container h2 {
+  font-size: 30px;
+  margin: 10px 0;
+  line-height: 40px;
+  font-weight: 700;
+}
+.imagetextleft__container p {
+  line-height: 30px;
+  font-size: 18px;
+  color: #636362;
+}
+.year {
+  color: var(--color-text-primary);
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 20px;
+}

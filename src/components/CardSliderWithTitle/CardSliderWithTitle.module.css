@@ -1,26 +1,25 @@
-.cardSlider__title h3 {
+.cardSlider__title__area {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: #f6f6f6;
+}
+.cardSlider__title__area h3 {
   font-size: 88px;
   font-weight: bold;
   color: #363635;
   padding-bottom: 20px;
-  line-height: 80px;
+  line-height: 90px;
   text-align: center;
 }
 
-/* ==== MEDIA QUERIES (SMALL DEVICES) ==== */
-
 @media screen and (max-width: 768px) {
   .cardSlider__title h3 {
-    font-size: 48px;
+    font-size: 40px;
+    line-height: 48px;
   }
 }
 @media screen and (max-width: 425px) {
   .cardSlider__title h3 {
-    font-size: 28px;
-  }
-}
-@media only screen and (max-width: 1200px) and (min-width: 769px) {
-  .cardSlider__title h3 {
-    font-size: 48px;
+    font-size: 30px;
   }
 }
