@@ -17,16 +17,18 @@ import CardSliderWithTitle from "../../components/CardSliderWithTitle/CardSlider
 import ZigzagHexaCards from "../../components/ZigzagHexaCards/ZigzagHexaCards";
 import ImageTextLeftRight from "../../components/ImageTextLeftRight/ImageTextLeftRight";
 import ZigzagTriCard from '../../components/ZigzagTriCard/ZigzagTriCard';
+import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 
 const Page = ({ locator, pageID }) => {
   const [loading, setLoading] = useState(true);
   const [pageData, setPageData] = useState(null);
   const [pageAttributes, setPageAttributes] = useState(null);
+  const [pageBreadcrumb, setPageBreadcrumb] = useState(false);
+  const [pageBreadcrumbData, setPageBreadcrumbData] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
     setPageData(null);
-    getPageComponents(pageID, setPageData, setPageAttributes, setLoading);
+    getPageComponents(pageID, setPageData, setPageAttributes, setPageBreadcrumb, setPageBreadcrumbData,setLoading);
   }, [locator, pageID]);
   return (
     <>
@@ -54,6 +56,23 @@ const Page = ({ locator, pageID }) => {
             />
           </Helmet>
           ): null}
+          
+          {pageBreadcrumb ? (
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <>
+                  {pageBreadcrumbData.map((data) => {
+                    return(
+                      <Breadcrumb id={data.id}/> 
+                    )
+                  })}
+                </>
+              </ol>
+            </nav>
+            ) : (
+              null
+            )
+          }
           {pageData.data.length > 0 ? (
             <>
               {pageData.data.map((data) => {
@@ -78,18 +97,14 @@ const Page = ({ locator, pageID }) => {
                         <ZigzagHexaCards componentID={data.id} />
                       )) || (data.type.match(THREE_CARD_COMPONENT_WITH_TITLE) && (
                         <ZigzagTriCard componentID={data.id} />
-                      )) || (
-                        <h1 className="text-center">
-                          COMPONENT IS UNDER DEVELOPMENT
-                        </h1>
-                      )}
+                      ))}
                   </>
                 );
               })}
               {locator === "/" ? <></> : null}
             </>
-            ) : (
-            <h1 className="text-center p-5">CONTENT NOT FOUND</h1>
+          ) : (
+            <></>
           )}
         </>
       )}

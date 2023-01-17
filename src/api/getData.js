@@ -2,14 +2,35 @@ import axios from "axios";
 import {DRUPAL_API_ENDPOINT,FETCH_ALL_URLS,FETCH_SPECIFIC_COMPONENT,FETCH_MEDIA_FOR_THE_COMPONENT,FETCH_MEDIA_DATA} from "../constants/drupalApiEndPoints";
 
 export const getGlobalPageUrls = async (setPageURL) => {
+  let pgUrls = [];
   const result = await axios.get(DRUPAL_API_ENDPOINT + FETCH_ALL_URLS);
-  setPageURL(result.data.data);
+  let next = result.data.links?.next ? result.data.links.next : null;
+  pgUrls.push(result.data.data);
+  while(next){
+    const nextUrl = next.href;
+    const result2 = await axios.get(nextUrl);
+    next = result2.data.links?.next ? result2.data.links?.next : null;
+    pgUrls.push(result2.data.data);
+  }
+  setPageURL(pgUrls);
 };
 
-export const getPageComponents = async (pageID,setPageData,setPageAttributes,setLoading) => {
+export const getPageComponents = async (pageID,setPageData,setPageAttributes,setPageBreadcrumb,setPageBreadcrumbData,setLoading) => {
   const result = await axios.get(DRUPAL_API_ENDPOINT+FETCH_ALL_URLS+pageID);
+  const breadcrumbReference = result.data.data.relationships?.field_breadcrumb_section?.data;
+  setPageBreadcrumbData(result.data.data.relationships?.field_breadcrumb_section?.data);
+  if(breadcrumbReference.length > 0){
+    setPageBreadcrumb(true);
+  }
   setPageData(result.data.data.relationships.field_web_page_sections);
   setPageAttributes(result.data.data.attributes);
+  setLoading(false);
+};
+
+export const getBreadcrumbData = async (id ,setPageBreadcrumb ,setLoading) => {
+  const breadcrumbData = await axios.get(DRUPAL_API_ENDPOINT+FETCH_SPECIFIC_COMPONENT+"breadcrumb/"+id);
+  setPageBreadcrumb(breadcrumbData.data.data.attributes);
+  console.log(breadcrumbData.data.data.attributes);
   setLoading(false);
 };
 
@@ -77,6 +98,13 @@ export const getCardSliderData = async (setDataLenght,componentType,componentID,
 export const getCardSliderWithTitleData = async (setDataLenght,componentType,componentID,setLoading) => {
   const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
   setDataLenght(result.data.data.attributes.field_component_title);
+  setLoading(false);
+};
+
+export const getZigzagTriCardData = async (setHeaderData,setSvg,componentType,componentID,setLoading) => {
+  const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
+  setHeaderData(result.data.data.attributes.field_title_3);
+  setSvg(result.data.data.attributes.field_svg_code_component?.value);
   setLoading(false);
 };
 

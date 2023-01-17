@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import styles from "../ZigzagTriCard/ZigzagTriCard.module.css";
+import { DRUPAL_API_ENDPOINT, FETCH_SPECIFIC_COMPONENT } from '../../constants/drupalApiEndPoints';
+import { THREE_CARD_COMPONENT_WITH_TITLE } from '../../constants/componentTypes';
 class ZigzagTriCardSingle extends Component {
   constructor() {
     super();
@@ -10,16 +12,14 @@ class ZigzagTriCardSingle extends Component {
     };
   }
   componentDidMount() {
-    const baseURL = "https://packimpex-cms.zmallplanet.com/";
-    const apiURL =
-      baseURL + "jsonapi/paragraph/c11_three_card_comp_with_title/";
+    const apiURL = DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +THREE_CARD_COMPONENT_WITH_TITLE ;
     const results = [];
     axios
       .get(apiURL + this.props.componentID)
       .then((response) => {
         this.setState({
           fieldData:
-            response.data.data.relationships.field_card_components_2.data,
+            response.data.data.relationships?.field_card_components_2?.data,
         });
         if (this.state.fieldData) {
           this.state.fieldData.forEach((data) => {
@@ -48,8 +48,8 @@ class ZigzagTriCardSingle extends Component {
                     var imgUrl = "";
                     if (imgName && imgFullDate) {
                       imgUrl =
-                        baseURL +
-                        "sites/default/files/" +
+                      DRUPAL_API_ENDPOINT +
+                        "/sites/default/files/" +
                         imgYear +
                         "-" +
                         imgMonth +
@@ -57,8 +57,8 @@ class ZigzagTriCardSingle extends Component {
                         imgName;
                     } else {
                       imgUrl =
-                        baseURL +
-                        "sites/default/files/2022-12/Packimpex-Family-Shoot-9314-4001.jpg";
+                      DRUPAL_API_ENDPOINT +
+                        "/sites/default/files/2022-12/Packimpex-Family-Shoot-9314-4001.jpg";
                     }
                     results.push({
                       fieldTitle,

@@ -18,7 +18,7 @@ const CardSliderParent = ({componentID}) => {
           {dataLenght === 3 ? (
             <SliderSingleCard dataID={componentID} />
           ) : (
-            <CardSlider dataID={componentID} />
+            <CardSlider componentID={componentID} />
           )}
         </>
       )}

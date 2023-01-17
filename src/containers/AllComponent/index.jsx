@@ -14,7 +14,6 @@ const AllComponent = () => {
       <TitleDescription componentID="781d799b-0133-4f2f-93f8-f54ff6b1788c" />
       <ImageTextLeftRight componentID="31f1b2af-269e-4ade-99b5-766f0cc3a77e" />
       <BannerWithTitleDescButton componentID="2fdc25ec-e634-4e37-aa28-38aaec4f3be2" />
-      {/* <BannerWithTitleDescButton componentID="3443d946-f74d-4d73-8cb7-6f71d4c1989e" /> */}
       <CardSliderWithTitle componentID="7899f8a5-94a3-48f0-96eb-ef58a57c8b41" />
       <ZigzagHexaCards componentID="4f8d9145-fd52-4337-86c1-7a80414ad136" />
       <ZigzagTriCard componentID="4c7b4ef0-b8ea-4600-ad50-d29cf43af9b3" />

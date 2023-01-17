@@ -17,19 +17,23 @@ function App() {
       <Layout>
         {pageURL !== null ? (
           <Routes>
-            {pageURL.map((page) => (
+            {pageURL.map((url) => (
               <>
-                <Route
-                  key={page.id}
-                  path={`${page.attributes.field_page_url}`}
-                  exact
-                  element={
-                    <Page
-                      locator={`${page.attributes.field_page_url}`}
-                      pageID={`${page.id}`}
-                    />
-                  }
-                />
+                {url.map((page) => (
+                <>
+                  <Route
+                    key={page.id}
+                    path={`${page.attributes.field_page_url}`}
+                    exact
+                    element={
+                      <Page
+                        locator={`${page.attributes.field_page_url}`}
+                        pageID={`${page.id}`}
+                      />
+                    }
+                  />
+                </>
+              ))}
               </>
             ))}
             <Route

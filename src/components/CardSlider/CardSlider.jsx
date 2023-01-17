@@ -17,9 +17,7 @@ class CardSlider extends Component {
     const baseURL = "https://packimpex-cms.zmallplanet.com/";
     const apiURL = baseURL + "jsonapi/paragraph/four_card_component/";
     const results = [];
-    axios
-      .get(apiURL + this.props.dataID)
-      .then((response) => {
+    axios.get(apiURL + this.props.dataID).then((response) => {
         this.setState({
           fieldData:
             response.data.data.relationships.field_card_components.data,
@@ -70,10 +68,10 @@ class CardSlider extends Component {
               });
           });
         }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
     // eslint-disable-next-line
   }
   render() {

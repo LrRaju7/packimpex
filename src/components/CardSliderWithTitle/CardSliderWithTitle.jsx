@@ -11,7 +11,7 @@ const CardSliderWithTitle = ({ componentID }) => {
     const baseURL = "https://packimpex-cms.zmallplanet.com/";
     const apiURL = baseURL + "jsonapi/paragraph/four_card_component/";
     axios
-      .get(apiURL + dataID)
+      .get(apiURL + componentID)
       .then((response) => {
         setHeaderData(response.data.data.attributes.field_heading);
       })
@@ -23,7 +23,7 @@ const CardSliderWithTitle = ({ componentID }) => {
     <div className={`${styles.cardSlider__title__area}`}>
       <div className={`container`}>
         <h3 className={`${styles.cardSlider__title}`}>{headerData}</h3>
-        <CardSlider dataID={dataID} />
+        <CardSlider componentID={componentID} />
       </div>
     </div>
   );
