@@ -148,9 +148,10 @@ export const getCardSliderWithTitleData = async (setHeaderData,setCardSliderData
   setLoading(false);
 };
 
-export const getZigzagTriCardData = async (setHeaderData,setSvg,componentType,componentID,setLoading) => {
+export const getZigzagTriCardData = async (setHeaderData,setZigzagTriCardData,setSvg,componentType,componentID,setLoading) => {
   const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
   setHeaderData(result.data.data.attributes.field_title_3);
+  setZigzagTriCardData(result.data.data.relationships?.field_card_components_2?.data);
   setSvg(result.data.data.attributes.field_svg_code_component?.value);
   setLoading(false);
 };

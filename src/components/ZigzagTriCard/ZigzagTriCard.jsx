@@ -8,10 +8,11 @@ import { THREE_CARD_COMPONENT_WITH_TITLE } from "../../constants/componentTypes"
 const ZigzagTriCard = ({ componentID }) => {
   const [loading, setLoading] = useState(true);
   const [headerData, setHeaderData] = useState(null);
+  const [zigzagTriCardData, setZigzagTriCardData] = useState(null);
   const [svg, setSvg] = useState(null);
   
   useEffect(() => {
-      getZigzagTriCardData(setHeaderData,setSvg,THREE_CARD_COMPONENT_WITH_TITLE,componentID,setLoading);
+      getZigzagTriCardData(setHeaderData,setZigzagTriCardData,setSvg,THREE_CARD_COMPONENT_WITH_TITLE,componentID,setLoading);
   });
   return (
     <>
@@ -24,7 +25,14 @@ const ZigzagTriCard = ({ componentID }) => {
                   <div className={`col-md-12 ${styles.zigzagCard__container}`}>
                     <h3>{headerData}</h3>
                       <div className={`${stylesZigzagTriCardSingle.single__zigzag__container}`}>
-                        <ZigzagTriCardSingle componentID={componentID}/>
+                        {zigzagTriCardData &&
+                          zigzagTriCardData.map(
+                          (data) => {
+                            return (
+                              <ZigzagTriCardSingle componentID={data.id}/>
+                            );
+                          }
+                        )}
                       </div>
                   </div>
                 </div>
