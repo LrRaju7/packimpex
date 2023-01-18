@@ -78,7 +78,7 @@ const Page = ({ locator, pageID }) => {
               })}
               {pageBreadcrumb ? (
                 <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
+                  <ol className="breadcrumb">
                     <>
                       {pageBreadcrumbData.map((data) => {
                         return(

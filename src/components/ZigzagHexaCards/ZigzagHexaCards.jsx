@@ -1,6 +1,5 @@
 import styles from "../ZigzagHexaCards/ZigzagHexaCards.module.css";
 import ZigzagCards from "./ZigzagCards";
-
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";

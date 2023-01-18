@@ -1,31 +1,58 @@
 import React , { useEffect, useState } from 'react';
 import styles from "../CardSliderWithTitle/CardSliderWithTitle.module.css";
 import CardSlider from "../CardSlider/CardSlider";
-import axios from "axios";
+import { Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { getCardSliderWithTitleData } from '../../api/getData';
+import { CONTENT_COMPONENT_FOUR_CARD } from '../../constants/componentTypes';
 
 const CardSliderWithTitle = ({ componentID }) => {
+  const [loading, setLoading] = useState(true);
   const [headerData, setHeaderData] = useState(null);
-  const dataID = "6f36220c-1e2e-49d1-806a-8075a7f7a0dc";
+  const [cardSliderData, setCardSliderData] = useState(null);
 
   useEffect(() => {
-    const baseURL = "https://dev-innoways.managedcoder.com/";
-    const apiURL = baseURL + "jsonapi/paragraph/four_card_component/";
-    axios
-      .get(apiURL + componentID)
-      .then((response) => {
-        setHeaderData(response.data.data.attributes?.field_heading);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+      getCardSliderWithTitleData(setHeaderData,setCardSliderData,CONTENT_COMPONENT_FOUR_CARD,componentID,setLoading);
   }, []);
   return (
-    <div className={`${styles.cardSlider__title__area}`}>
-      <div className={`container`}>
-        <h3 className={`${styles.cardSlider__title}`}>{headerData}</h3>
-        <CardSlider dataID={componentID} />
-      </div>
-    </div>
+    <>
+      {loading ? null : (
+        <div className={`${styles.cardSlider__title__area}`}>
+          <div className={`container`}>
+            <h3 className={`${styles.cardSlider__title}`}>{headerData}</h3>
+            <Swiper
+              className={`container ${styles.cardSlider__container}`}
+              // install Swiper modules
+              modules={[Pagination]}
+              spaceBetween={40}
+              slidesPerView={4}
+              breakpoints={{
+                320: { slidesPerView: 1 },
+                480: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 },
+              }}
+            >
+              {cardSliderData &&
+                cardSliderData.map(
+                  (data, index) => {
+                    return (
+                      <SwiperSlide
+                        key={index}
+                        className={`${styles.cardSlider__area}`}
+                      >
+                        <CardSlider componentID={data.id} />
+                      </SwiperSlide>
+                    );
+                  }
+                )}
+            </Swiper>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

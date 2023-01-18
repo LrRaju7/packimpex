@@ -55,7 +55,8 @@ export const getBannerWithTitleDescButtonData = async (setData,setBtnTitle, setB
   const result = await axios.get(DRUPAL_API_ENDPOINT+FETCH_SPECIFIC_COMPONENT+componentType+'/'+componentID);
   setData(result.data);
   setBtnTitle(result.data.data.attributes.field_content_button?.title);
-  setBtnUrl(result.data.data.attributes.field_content_button?.uri);
+  let buttonUrl = result.data.data.attributes.field_content_button?.uri.replace('internal:','');
+  setBtnUrl(buttonUrl);
   setSvg(result.data.data.attributes.field_svg_code_component?.value);
   const mediaID = result.data.data.relationships?.field_content_image?.data?.id;
   let mediaFileID = null;
@@ -109,21 +110,41 @@ export const getHtmlEditorData = async (setEditor,componentType,componentID,setL
   setLoading(false);
 };
 
-export const getCardSliderParentData = async (setDataLenght,componentType,componentID,setLoading) => {
+export const getCardSliderParentData = async (setDataLenght,setCardSliderData,componentType,componentID,setLoading) => {
   const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
   setDataLenght(result.data.data.attributes.field_component_title);
+  setCardSliderData(result.data.data.relationships?.field_card_components?.data);
   setLoading(false);
 };
 
-export const getCardSliderData = async (setDataLenght,componentType,componentID,setLoading) => {
+export const getCardSliderData = async (setFieldTitle,setBtnUrl,setBtnTitle,setImgUrl,componentType,componentID,setLoading) => {
   const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
-  setDataLenght(result.data.data.attributes.field_component_title);
+  setFieldTitle(result.data.data.attributes?.field_title);
+  let buttonUrl = result.data.data.attributes?.field_button?.uri.replace('internal:','');
+  setBtnUrl(buttonUrl);
+  setBtnTitle(result.data.data.attributes?.field_button.title);
+  const imgApi = result.data.data.relationships?.field_image?.links?.related?.href;
+  if(imgApi){
+    const resultImg = await axios.get(imgApi);
+    const imgName = resultImg.data.data?.attributes?.name;
+    const imgFullDate = resultImg.data.data?.attributes?.created;
+    const imgDate = new Date(imgFullDate);
+    const imgYear = imgDate.getFullYear();
+    const imgMonth = ("0" + (imgDate.getMonth() + 1)).slice(-2);
+    if (imgName && imgFullDate) {
+      setImgUrl(`${DRUPAL_API_ENDPOINT}/sites/default/files/${imgYear}-${imgMonth}/${imgName}`);
+    } else {
+      setImgUrl(DRUPAL_API_ENDPOINT + "/sites/default/files/2022-12/Basel-3703.jpg");
+    }
+  }
   setLoading(false);
 };
 
-export const getCardSliderWithTitleData = async (setDataLenght,componentType,componentID,setLoading) => {
+export const getCardSliderWithTitleData = async (setHeaderData,setCardSliderData,componentType,componentID,setLoading) => {
   const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
-  setDataLenght(result.data.data.attributes.field_component_title);
+  setHeaderData(result.data.data.attributes?.field_heading);
+  setCardSliderData(result.data.data.relationships?.field_card_components?.data);
+  console.log(result.data.data.relationships?.field_card_components?.data);
   setLoading(false);
 };
 
