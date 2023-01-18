@@ -90,6 +90,14 @@ button {
   padding-top: 100px;
   padding-bottom: 100px;
 }
+
+.pb-100 {
+  padding-bottom: 100px;
+}
+
+.pt-100 {
+  padding-top: 100px;
+}
 /* Button white */
 
 .btn__white {
@@ -341,4 +349,17 @@ button {
   .fadeInAnim .svg_arrow {
     display: none;
   }
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  float: left;
+  padding-right: var(--bs-breadcrumb-item-padding-x);
+  color: var(--bs-breadcrumb-divider-color);
+  content: var(--bs-breadcrumb-divider, ">") !important;
+}
+.breadcrumb-item a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.breadcrumb-item a:hover {
+  color: var(--color-text-secondary);
 }

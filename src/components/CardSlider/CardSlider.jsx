@@ -20,25 +20,25 @@ class CardSlider extends Component {
     axios.get(apiURL + this.props.dataID).then((response) => {
         this.setState({
           fieldData:
-            response.data.data.relationships.field_card_components.data,
+            response.data.data.relationships?.field_card_components?.data,
         });
         if (this.state.fieldData) {
           this.state.fieldData.forEach((data) => {
             axios
               .get(apiURL + data.id)
               .then((response) => {
-                const fieldTitle = response.data.data.attributes.field_title;
-                const btnUrl = response.data.data.attributes.field_button.uri;
+                const fieldTitle = response.data.data.attributes?.field_title;
+                const btnUrl = response.data.data.attributes?.field_button?.uri;
                 const btnTitle =
-                  response.data.data.attributes.field_button.title;
+                  response.data.data.attributes?.field_button.title;
                 const imgApi =
-                  response.data.data.relationships.field_image.links.related
-                    .href;
-                axios
+                  response.data.data.relationships?.field_image?.links?.related?.href;
+                if(imgApi){
+                  axios
                   .get(imgApi)
                   .then((response) => {
-                    const imgName = response.data.data?.attributes.name;
-                    const imgFullDate = response.data.data?.attributes.created;
+                    const imgName = response.data.data?.attributes?.name;
+                    const imgFullDate = response.data.data?.attributes?.created;
                     const imgDate = new Date(imgFullDate);
                     const imgYear = imgDate.getFullYear();
                     const imgMonth = ("0" + (imgDate.getMonth() + 1)).slice(-2);
@@ -62,6 +62,7 @@ class CardSlider extends Component {
                   .catch((error) => {
                     console.error(error);
                   });
+                }
               })
               .catch((error) => {
                 console.error(error);

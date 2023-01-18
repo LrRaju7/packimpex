@@ -20,7 +20,7 @@ class ZigzagCards extends Component {
       .then((response) => {
         this.setState({
           fieldData:
-            response.data.data.relationships.field_card_components_1.data,
+            response.data.data.relationships?.field_card_components_1?.data,
         });
         if (this.state.fieldData) {
           let id = 1;
@@ -29,21 +29,20 @@ class ZigzagCards extends Component {
               .get(apiURL + data.id)
               .then((response) => {
                 const fieldTitle =
-                  response.data.data.attributes.field_card_title;
+                  response.data.data.attributes?.field_card_title;
                 const fieldDescription =
-                  response.data.data.attributes.field_card_description.value;
+                  response.data.data.attributes?.field_card_description?.value;
                 const btnUrl =
-                  response.data.data.attributes.field_card_button.uri;
+                  response.data.data.attributes?.field_card_button?.uri;
                 const btnTitle =
-                  response.data.data.attributes.field_card_button.title;
+                  response.data.data.attributes?.field_card_button?.title;
                 const imgApi =
-                  response.data.data.relationships.field_card_image.links
-                    .related.href;
+                  response.data.data.relationships?.field_card_image?.links?.related?.href;
                 axios
                   .get(imgApi)
                   .then((response) => {
-                    const imgName = response.data.data?.attributes.name;
-                    const imgFullDate = response.data.data?.attributes.created;
+                    const imgName = response.data.data?.attributes?.name;
+                    const imgFullDate = response.data.data?.attributes?.created;
                     const imgDate = new Date(imgFullDate);
                     const imgYear = imgDate.getFullYear();
                     const imgMonth = ("0" + (imgDate.getMonth() + 1)).slice(-2);

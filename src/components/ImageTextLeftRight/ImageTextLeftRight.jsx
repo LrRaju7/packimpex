@@ -18,7 +18,7 @@ const customStyles = {
   },
 };
 
-function ImageTextLeftRight({ componentID }) {
+function ImageTextLeftRight({ componentID, isFirst, isLast }) {
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [year, setYear] = useState("");
@@ -28,16 +28,28 @@ function ImageTextLeftRight({ componentID }) {
   const [position, setPosition] = useState("");
   const [image, setImage] = useState("");
   const [imageAlt, setImageAlt] = useState(null);
-  const [visible2, setVisible2] = useState("");
-  const [visible3, setVisible3] = useState("");
+  const [visibleRight, setVisibleRight] = useState("");
+  const [visibleLeft, setVisibleLeft] = useState("");
   const [winST, setWinST] = useState(null);
-  const arrowRef2 = useRef(null);
-  const arrowRef3 = useRef(null);
+  const arrowRefRight = useRef(null);
+  const arrowRefLeft = useRef(null);
   const [svg, setSvg] = useState(null);
 
   useEffect(() => {
-    getImageTextLeftRightData(setYear,setTitle,setDescription,setPosition,setImage,setImageAlt,setLink,setSvg,TWO_COLUMN_COMPONENT_YEAR_TITLE,componentID,setLoading);
-  },[componentID]);
+    getImageTextLeftRightData(
+      setYear,
+      setTitle,
+      setDescription,
+      setPosition,
+      setImage,
+      setImageAlt,
+      setLink,
+      setSvg,
+      TWO_COLUMN_COMPONENT_YEAR_TITLE,
+      componentID,
+      setLoading
+    );
+  }, [componentID]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,31 +59,70 @@ function ImageTextLeftRight({ componentID }) {
     window.addEventListener("scroll", handleScroll);
 
     const winH = window.innerHeight;
-    if (position === "right") {
-      const offsetTop2 = arrowRef2.current.offsetTop;
-      const outerHeight2 = arrowRef2.current.offsetHeight;
-      if (winST > offsetTop2 - winH + outerHeight2) {
-        setVisible2("visible");
-      } else if (winST < offsetTop2 - winH) {
-        setVisible2("");
+    if (!isLast && position === "right") {
+      const offsetTopRight = arrowRefRight?.current?.offsetTop;
+      const outerHeightRight = arrowRefRight?.current?.offsetHeight;
+      if (winST > offsetTopRight - winH + outerHeightRight) {
+        setVisibleRight("visible");
+      } else if (winST < offsetTopRight - winH) {
+        setVisibleRight("");
       }
-    } else if (position === "left") {
-      const offsetTop3 = arrowRef3.current.offsetTop;
-      const outerHeight3 = arrowRef3.current.offsetHeight;
-      if (winST > offsetTop3 - winH + outerHeight3) {
-        setVisible3("visible");
-      } else if (winST < offsetTop3 - winH) {
-        setVisible3("");
+    } else if (!isLast && position === "left") {
+      const offsetTopLeft = arrowRefLeft?.current?.offsetTop;
+      const outerHeightLeft = arrowRefLeft?.current?.offsetHeight;
+      if (winST > offsetTopLeft - winH + outerHeightLeft) {
+        setVisibleLeft("visible");
+      } else if (winST < offsetTopLeft - winH) {
+        setVisibleLeft("");
       }
     }
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+    // eslint-disable-next-line
   }, [winST]);
+
   return (
     <>
-      <div className="pxy-100">
+      <div className={`${isLast && "pb-100"}`}>
+        {isFirst && position === "right" && (
+          <div
+            className="top-line steps"
+            style={{
+              position: "absolute",
+              right: "0",
+              bottom: "-100px",
+              overflow: "hidden",
+            }}
+          >
+            <div className="bg_div fadeInAnim visible">
+              <div className="svg_arrow visible">
+                <svg
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  version="1.1"
+                  width="843.3"
+                  height="412.1"
+                  viewBox="0 0 843.3 412.1"
+                  preserveAspectRatio="none"
+                >
+                  <symbol id="pathSymbol">
+                    <path
+                      id="border"
+                      className="path"
+                      d="M0,0S-47.5,81.75-135.25,126.25s-156-22-211.5,0c-75.38,29.88-40.346,146.38-117.5,193-83.028,50.169-153.268-25.683-271.75-8-73.35,10.947-109.474,95.3-109.474,125.881"
+                      transform="translate(847.474 2.734)"
+                    ></path>
+                  </symbol>
+                  <g>
+                    <use xlinkHref="#pathSymbol" className="path1"></use>
+                    <use xlinkHref="#pathSymbol" className="path2"></use>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        )}
         {loading ? null : (
           <>
             {position === "right" ? (
@@ -102,7 +153,11 @@ function ImageTextLeftRight({ componentID }) {
                     )}
                   </div>
                   <div className="col-md-6">
-                    <img className={styles.style__img} src={image} alt={imageAlt}/>
+                    <img
+                      className={styles.style__img}
+                      src={image}
+                      alt={imageAlt}
+                    />
                   </div>
                   <Modal
                     isOpen={modalOpen}
@@ -129,44 +184,46 @@ function ImageTextLeftRight({ componentID }) {
                   </Modal>
                 </div>
                 <div>
-                  <div
-                    className="line_svg_block wow steps animated"
-                    style={{ visibility: "visible" }}
-                  >
-                    <div className="fadeInAnim visible">
-                      <div
-                        ref={arrowRef2}
-                        className={`svg_arrow arrow2 ${visible2}`}
-                      >
-                        <svg
-                          version="1.1"
-                          width="671.469"
-                          height="237.338"
-                          viewBox="0 0 671.5 237.3"
-                          preserveAspectRatio="none"
+                  {!isLast && (
+                    <div
+                      className="line_svg_block wow steps animated"
+                      style={{ visibility: "visible" }}
+                    >
+                      <div className="fadeInAnim visible">
+                        <div
+                          ref={arrowRefRight}
+                          className={`svg_arrow arrow2 ${visibleRight}`}
                         >
-                          <symbol id="pathSymbol2">
-                            <path
-                              id="border-02"
-                              className="path"
-                              d="M670.2,1.2c-15.5,52-62.3,91.5-132.4,109.5C401.2,146,311.7,56,161.6,92.7C71.8,114.7,20,166.2,1.2,236.1"
-                              transform="translate(1.225 1.244)"
-                            ></path>
-                          </symbol>
-                          <g>
-                            <use
-                              xlinkHref="#pathSymbol2"
-                              className="path1-01"
-                            ></use>
-                            <use
-                              xlinkHref="#pathSymbol2"
-                              className="path2-02"
-                            ></use>
-                          </g>
-                        </svg>
+                          <svg
+                            version="1.1"
+                            width="671.469"
+                            height="237.338"
+                            viewBox="0 0 671.5 237.3"
+                            preserveAspectRatio="none"
+                          >
+                            <symbol id="pathSymbol2">
+                              <path
+                                id="border-02"
+                                className="path"
+                                d="M670.2,1.2c-15.5,52-62.3,91.5-132.4,109.5C401.2,146,311.7,56,161.6,92.7C71.8,114.7,20,166.2,1.2,236.1"
+                                transform="translate(1.225 1.244)"
+                              ></path>
+                            </symbol>
+                            <g>
+                              <use
+                                xlinkHref="#pathSymbol2"
+                                className="path1-01"
+                              ></use>
+                              <use
+                                xlinkHref="#pathSymbol2"
+                                className="path2-02"
+                              ></use>
+                            </g>
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             ) : (
@@ -175,7 +232,11 @@ function ImageTextLeftRight({ componentID }) {
               >
                 <div className="row align-items-center">
                   <div className="col-md-6">
-                    <img className={styles.style__img} src={image} alt={imageAlt}/>
+                    <img
+                      className={styles.style__img}
+                      src={image}
+                      alt={imageAlt}
+                    />
                   </div>
                   <div className="col-md-6">
                     <span className={styles.year}>{year}</span>
@@ -225,46 +286,48 @@ function ImageTextLeftRight({ componentID }) {
                     />
                   </Modal>
                 </div>
-                <div>
-                  <div
-                    className="line_svg_block s2 wow steps animated"
-                    style={{ visibility: "visible" }}
-                  >
-                    <div className="fadeInAnim visible">
-                      <div
-                        ref={arrowRef3}
-                        className={`svg_arrow arrow3 ${visible3}`}
-                      >
-                        <svg
-                          version="1.1"
-                          width="671.469"
-                          height="237.338"
-                          viewBox="0 0 671.5 237.3"
-                          preserveAspectRatio="none"
+                {!isLast && (
+                  <div>
+                    <div
+                      className="line_svg_block s2 wow steps animated"
+                      style={{ visibility: "visible" }}
+                    >
+                      <div className="fadeInAnim visible">
+                        <div
+                          ref={arrowRefLeft}
+                          className={`svg_arrow arrow3 ${visibleLeft}`}
                         >
-                          <symbol id="pathSymbol3">
-                            <path
-                              id="border-03"
-                              className="path"
-                              d="M1.2,1.2c0,0,20.4,117.4,177.4,147.2C282,168,383.1,86.1,502.8,96.2C640.2,107.9,664.2,236,664.2,236"
-                              transform="translate(1.225 1.244)"
-                            ></path>
-                          </symbol>
-                          <g>
-                            <use
-                              xlinkHref="#pathSymbol3"
-                              className="path1-03"
-                            ></use>
-                            <use
-                              xlinkHref="#pathSymbol3"
-                              className="path2-03"
-                            ></use>
-                          </g>
-                        </svg>
+                          <svg
+                            version="1.1"
+                            width="671.469"
+                            height="237.338"
+                            viewBox="0 0 671.5 237.3"
+                            preserveAspectRatio="none"
+                          >
+                            <symbol id="pathSymbol3">
+                              <path
+                                id="border-03"
+                                className="path"
+                                d="M1.2,1.2c0,0,20.4,117.4,177.4,147.2C282,168,383.1,86.1,502.8,96.2C640.2,107.9,664.2,236,664.2,236"
+                                transform="translate(1.225 1.244)"
+                              ></path>
+                            </symbol>
+                            <g>
+                              <use
+                                xlinkHref="#pathSymbol3"
+                                className="path1-03"
+                              ></use>
+                              <use
+                                xlinkHref="#pathSymbol3"
+                                className="path2-03"
+                              ></use>
+                            </g>
+                          </svg>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             )}
           </>

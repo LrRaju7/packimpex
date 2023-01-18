@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import Helmet from "react-helmet";
 import { getPageComponents } from "../../api/getData";
 import {
@@ -9,6 +9,7 @@ import {
   CONTENT_COMPONENT_FOUR_CARD,
   THREE_CARD_COMPONENT_WITH_TITLE,
   THREE_CARD_COMPONENT_WITH_KICKER,
+  COMPONENT_HTML_EDITOR,
 } from "../../constants/componentTypes";
 import Banner from "../../components/Banner/Banner";
 import BannerWithTitleDescButton from "../../components/BannerWithTitleDescButton/BannerWithTitleDescButton";
@@ -16,8 +17,9 @@ import TitleDescription from "../../components/TitleDescription/TitleDescription
 import CardSliderWithTitle from "../../components/CardSliderWithTitle/CardSliderWithTitle";
 import ZigzagHexaCards from "../../components/ZigzagHexaCards/ZigzagHexaCards";
 import ImageTextLeftRight from "../../components/ImageTextLeftRight/ImageTextLeftRight";
-import ZigzagTriCard from '../../components/ZigzagTriCard/ZigzagTriCard';
-import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
+import ZigzagTriCard from "../../components/ZigzagTriCard/ZigzagTriCard";
+import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
+import HtmlEditor from "../../components/HtmlEditor/HtmlEditor";
 
 const Page = ({ locator, pageID }) => {
   const [loading, setLoading] = useState(true);
@@ -28,7 +30,14 @@ const Page = ({ locator, pageID }) => {
 
   useEffect(() => {
     setPageData(null);
-    getPageComponents(pageID, setPageData, setPageAttributes, setPageBreadcrumb, setPageBreadcrumbData,setLoading);
+    getPageComponents(
+      pageID,
+      setPageData,
+      setPageAttributes,
+      setPageBreadcrumb,
+      setPageBreadcrumbData,
+      setLoading
+    );
   }, [locator, pageID]);
   return (
     <>
@@ -56,23 +65,6 @@ const Page = ({ locator, pageID }) => {
             />
           </Helmet>
           ): null}
-          
-          {pageBreadcrumb ? (
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <>
-                  {pageBreadcrumbData.map((data) => {
-                    return(
-                      <Breadcrumb id={data.id}/> 
-                    )
-                  })}
-                </>
-              </ol>
-            </nav>
-            ) : (
-              null
-            )
-          }
           {pageData.data.length > 0 ? (
             <>
               {pageData.data.map((data) => {
@@ -80,12 +72,38 @@ const Page = ({ locator, pageID }) => {
                   <>
                     {(data.type.match(BANNER_WITH_TITLE_IMAGE) && (
                       <Banner componentID={data.id} />
-                    )) ||
-                      (data.type.match(CONTENT_COMPONENT_WITH_IMAGE_TITLE) && (
+                    ))}
+                  </>
+                );
+              })}
+              {pageBreadcrumb ? (
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <>
+                      {pageBreadcrumbData.map((data) => {
+                        return(
+                          <Breadcrumb id={data.id}/> 
+                        )
+                      })}
+                    </>
+                  </ol>
+                </nav>
+                ) : (
+                  null
+                )
+              }
+              {pageData.data.map((data, index) => {
+                return (
+                  <>
+                    {(data.type.match(CONTENT_COMPONENT_WITH_IMAGE_TITLE) && (
                         <BannerWithTitleDescButton componentID={data.id} />
                       )) ||
                       (data.type.match(TWO_COLUMN_COMPONENT_YEAR_TITLE) && (
-                        <ImageTextLeftRight componentID={data.id} />
+                        <ImageTextLeftRight
+                          componentID={data.id}
+                          isFirst={index === 1}
+                          isLast={pageData.data.length - index === 4}
+                        />
                       )) ||
                       (data.type.match(CONTENT_COMPONENT_WITH_TITLE) && (
                         <TitleDescription componentID={data.id} />
@@ -95,8 +113,12 @@ const Page = ({ locator, pageID }) => {
                       )) ||
                       (data.type.match(THREE_CARD_COMPONENT_WITH_KICKER) && (
                         <ZigzagHexaCards componentID={data.id} />
-                      )) || (data.type.match(THREE_CARD_COMPONENT_WITH_TITLE) && (
+                      )) ||
+                      (data.type.match(THREE_CARD_COMPONENT_WITH_TITLE) && (
                         <ZigzagTriCard componentID={data.id} />
+                      )) ||
+                      (data.type.match(COMPONENT_HTML_EDITOR) && (
+                        <HtmlEditor componentID={data.id} />
                       ))}
                   </>
                 );
@@ -104,7 +126,8 @@ const Page = ({ locator, pageID }) => {
               {locator === "/" ? <></> : null}
             </>
           ) : (
-            <></>
+            <>
+            </>
           )}
         </>
       )}

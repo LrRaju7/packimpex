@@ -61,16 +61,17 @@
     transform: rotate(45deg) translate(20px, 20px);
   }
 }
-.svg__block__1__up {
+/* .svg__block__1__up {
+  
+} */
+.svg__block__1__up svg {
+  fill: #ffff;
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   width: 100%;
   margin: 0;
   padding: 0;
-}
-.svg__block__1__up svg {
-  fill: #ffff;
 }
 
 @media (max-width: 1400px) and (min-width: 992px) {

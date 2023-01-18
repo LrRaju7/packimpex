@@ -10,3 +10,4 @@ export const THREE_CARD_COMPONENT_WITH_TITLE= "c11_three_card_comp_with_title";
 export const COMPONENT_DIVISION_CONTAINER= "c12_division_container";
 export const COMPONENT_SPACE= "c13_space";
 export const COMPONENT_CARD_WITH_IMAGE_TITLE= "card_component_with_image_title_";
+export const COMPONENT_HTML_EDITOR= "c14_html_editor";

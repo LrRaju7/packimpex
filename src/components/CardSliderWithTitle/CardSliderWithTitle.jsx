@@ -13,7 +13,7 @@ const CardSliderWithTitle = ({ componentID }) => {
     axios
       .get(apiURL + componentID)
       .then((response) => {
-        setHeaderData(response.data.data.attributes.field_heading);
+        setHeaderData(response.data.data.attributes?.field_heading);
       })
       .catch((error) => {
         console.error(error);
@@ -23,7 +23,7 @@ const CardSliderWithTitle = ({ componentID }) => {
     <div className={`${styles.cardSlider__title__area}`}>
       <div className={`container`}>
         <h3 className={`${styles.cardSlider__title}`}>{headerData}</h3>
-        <CardSlider componentID={componentID} />
+        <CardSlider dataID={componentID} />
       </div>
     </div>
   );

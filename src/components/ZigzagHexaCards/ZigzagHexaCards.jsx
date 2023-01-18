@@ -17,9 +17,9 @@ const ZigzagHexaCards = ({componentID}) => {
     axios
       .get(apiURL + componentID)
       .then((response) => {
-        setHeadlineData(response.data.data.attributes.field_kicker_headline_1);
-        setTitleData(response.data.data.attributes.field_title_1);
-        setSvg(response.data.data.attributes.field_svg_code_component?.value);
+        setHeadlineData(response.data.data.attributes?.field_kicker_headline_1);
+        setTitleData(response.data.data.attributes?.field_title_1);
+        setSvg(response.data.data.attributes?.field_svg_code_component?.value);
       })
       .catch((error) => {
         console.error(error);

@@ -30,7 +30,6 @@ export const getPageComponents = async (pageID,setPageData,setPageAttributes,set
 export const getBreadcrumbData = async (id ,setPageBreadcrumb ,setLoading) => {
   const breadcrumbData = await axios.get(DRUPAL_API_ENDPOINT+FETCH_SPECIFIC_COMPONENT+"breadcrumb/"+id);
   setPageBreadcrumb(breadcrumbData.data.data.attributes);
-  console.log(breadcrumbData.data.data.attributes);
   setLoading(false);
 };
 
@@ -38,23 +37,37 @@ export const getBannerComponentData = async (setBannerData,setImage,setImageAlt,
   const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
   setBannerData(result.data.data.attributes.field_banner_title);
   setSvg(result.data.data.attributes.field_svg_code_component?.value);
-  const mediaResult = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_DATA +result.data.data.relationships.field_banner_image.data.id);
-  setImageAlt(mediaResult.data.data.relationships.thumbnail.data.meta.alt);
-  const mediaData = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_FOR_THE_COMPONENT +mediaResult.data.data.relationships.thumbnail.data.id);
-  setImage(DRUPAL_API_ENDPOINT + mediaData.data.data.attributes.uri.url);
+  const mediaID = result.data.data.relationships?.field_banner_image?.data?.id;
+  let mediaFileID = null;
+  if(mediaID){
+    const mediaResult = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_DATA +mediaID);
+    setImageAlt(mediaResult.data.data.relationships.thumbnail.data.meta.alt);
+    mediaFileID = mediaResult.data.data.relationships?.thumbnail?.data?.id;
+  }
+  if(mediaFileID){
+    const mediaData = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_FOR_THE_COMPONENT +mediaFileID);
+    setImage(DRUPAL_API_ENDPOINT + mediaData.data.data.attributes.uri.url);
+  }
   setLoading(false);
 };
 
 export const getBannerWithTitleDescButtonData = async (setData,setBtnTitle, setBtnUrl,setSvg,setImageAlt,setImage,componentType, componentID, setLoading) => {
-  const response = await axios.get(DRUPAL_API_ENDPOINT+FETCH_SPECIFIC_COMPONENT+componentType+'/'+componentID);
-  setData(response.data);
-  setBtnTitle(response.data.data.attributes.field_content_button?.title);
-  setBtnUrl(response.data.data.attributes.field_content_button?.uri);
-  setSvg(response.data.data.attributes.field_svg_code_component?.value);
-  const mediaResult = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_DATA +response.data.data.relationships.field_content_image?.data?.id);
-  setImageAlt(mediaResult.data.data.relationships.thumbnail.data.meta.alt);
-  const mediaData = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_FOR_THE_COMPONENT +mediaResult.data.data.relationships.thumbnail.data.id);
+  const result = await axios.get(DRUPAL_API_ENDPOINT+FETCH_SPECIFIC_COMPONENT+componentType+'/'+componentID);
+  setData(result.data);
+  setBtnTitle(result.data.data.attributes.field_content_button?.title);
+  setBtnUrl(result.data.data.attributes.field_content_button?.uri);
+  setSvg(result.data.data.attributes.field_svg_code_component?.value);
+  const mediaID = result.data.data.relationships?.field_content_image?.data?.id;
+  let mediaFileID = null;
+  if(mediaID){
+    const mediaResult = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_DATA +mediaID);
+    setImageAlt(mediaResult.data.data.relationships?.thumbnail?.data?.meta?.alt);
+    mediaFileID = mediaResult.data.data.relationships?.thumbnail?.data?.id;
+  }
+  if(mediaFileID){
+    const mediaData = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_FOR_THE_COMPONENT +mediaFileID);
   setImage(DRUPAL_API_ENDPOINT + mediaData.data.data.attributes.uri.url);
+  }
   setLoading(false);
 };
 
@@ -68,10 +81,17 @@ export const getImageTextLeftRightData = async (setYear, setTitle,setDescription
   }
   setPosition(result.data.data.attributes.field_image_position);
   setSvg(result.data.data.attributes.field_svg_code_component?.value);
-  const mediaResult = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_DATA +result.data.data.relationships.field_image_2.data.id);
-  setImageAlt(mediaResult.data.data.relationships.thumbnail.data.meta.alt);
-  const mediaData = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_FOR_THE_COMPONENT +mediaResult.data.data.relationships.thumbnail.data.id);
-  setImage(DRUPAL_API_ENDPOINT + mediaData.data.data.attributes.uri.url);
+  const mediaID = result.data.data.relationships?.field_image_2?.data?.id;
+  let mediaFileID = null;
+  if(mediaID){
+    const mediaResult = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_DATA +mediaID);
+    setImageAlt(mediaResult.data.data.relationships.thumbnail?.data?.meta?.alt);
+    mediaFileID = mediaResult.data.data.relationships?.thumbnail?.data?.id;
+  }
+  if(mediaFileID){
+    const mediaData = await axios.get(DRUPAL_API_ENDPOINT +FETCH_MEDIA_FOR_THE_COMPONENT +mediaFileID);
+    setImage(DRUPAL_API_ENDPOINT + mediaData.data.data.attributes?.uri?.url);
+  }
   setLoading(false);
 };
 
@@ -80,6 +100,12 @@ export const getTitleDescriptionData = async (setTitle,setDescription,setSvg,com
   setTitle(result.data.data.attributes.field_component_title);
   setDescription(result.data.data.attributes.field_component_description);
   setSvg(result.data.data.attributes.field_svg_code_component?.value);
+  setLoading(false);
+};
+
+export const getHtmlEditorData = async (setEditor,componentType,componentID,setLoading) => {
+  const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
+  setEditor(result.data.data.attributes.field_html_code.value);
   setLoading(false);
 };
 
