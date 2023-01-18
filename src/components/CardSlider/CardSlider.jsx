@@ -27,6 +27,7 @@ class CardSlider extends Component {
             axios
               .get(apiURL + data.id)
               .then((response) => {
+                console.log(response);
                 const fieldTitle = response.data.data.attributes?.field_title;
                 const btnUrl = response.data.data.attributes?.field_button?.uri;
                 const btnTitle =
