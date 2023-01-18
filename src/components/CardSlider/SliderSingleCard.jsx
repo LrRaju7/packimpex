@@ -10,7 +10,7 @@ class SliderSingleCard extends Component {
     };
   }
   componentDidMount() {
-    const baseURL = "https://packimpex-cms.zmallplanet.com/";
+    const baseURL = "https://dev-innoways.managedcoder.com/";
     const apiURL = baseURL + "jsonapi/paragraph/four_card_component/";
     const results = [];
     axios

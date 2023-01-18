@@ -8,7 +8,7 @@ const CardSliderWithTitle = ({ componentID }) => {
   const dataID = "6f36220c-1e2e-49d1-806a-8075a7f7a0dc";
 
   useEffect(() => {
-    const baseURL = "https://packimpex-cms.zmallplanet.com/";
+    const baseURL = "https://dev-innoways.managedcoder.com/";
     const apiURL = baseURL + "jsonapi/paragraph/four_card_component/";
     axios
       .get(apiURL + componentID)

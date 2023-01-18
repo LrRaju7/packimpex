@@ -11,7 +11,7 @@ const ZigzagHexaCards = ({componentID}) => {
   const [svg, setSvg] = useState(null);
 
   useEffect(() => {
-    const baseURL = "https://packimpex-cms.zmallplanet.com/";
+    const baseURL = "https://dev-innoways.managedcoder.com/";
     const apiURL =
       baseURL + "jsonapi/paragraph/three_card_component_with_kicker/";
     axios
