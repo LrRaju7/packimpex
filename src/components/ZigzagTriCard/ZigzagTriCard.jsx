@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../ZigzagTriCard/ZigzagTriCard.module.css";
+import stylesZigzagTriCardSingle from "../ZigzagTriCard/ZigzagTriCard.module.css";
 import ZigzagTriCardSingle from "../ZigzagTriCard/ZigzagTriCardSingle";
 import { getZigzagTriCardData } from "../../api/getData";
 import { THREE_CARD_COMPONENT_WITH_TITLE } from "../../constants/componentTypes"
@@ -22,8 +23,9 @@ const ZigzagTriCard = ({ componentID }) => {
                 <div className={`row`}>
                   <div className={`col-md-12 ${styles.zigzagCard__container}`}>
                     <h3>{headerData}</h3>
-
-                    <ZigzagTriCardSingle componentID={componentID}/>
+                      <div className={`${stylesZigzagTriCardSingle.single__zigzag__container}`}>
+                        <ZigzagTriCardSingle componentID={componentID}/>
+                      </div>
                   </div>
                 </div>
               </div>

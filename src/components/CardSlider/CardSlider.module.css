@@ -53,4 +53,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
+  margin: 30px 0;
+}
+.slider__single__card h4 {
+  font-size: 1.25rem;
 }

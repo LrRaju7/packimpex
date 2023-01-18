@@ -99,7 +99,6 @@ button {
   padding-top: 100px;
 }
 /* Button white */
-
 .btn__white {
   border-radius: 50px;
   background: #fff;
@@ -112,6 +111,23 @@ button {
   text-align: center;
 }
 .btn__white:hover {
+  background: #a2bb0c;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.btn__white>a {
+  border-radius: 50px;
+  background: #fff;
+  color: #a2bb0c;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+}
+.btn__white>a:hover {
   background: #a2bb0c;
   color: #fff;
   transition: 0.3s;

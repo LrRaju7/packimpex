@@ -155,4 +155,59 @@ export const getZigzagTriCardData = async (setHeaderData,setSvg,componentType,co
   setLoading(false);
 };
 
+export const getZigzagHexaCardsData = async (setHeadlineData,setTitleData,setZigzagHexaCardData,setSvg,componentType,componentID,setLoading) => {
+  const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
+  setHeadlineData(result.data.data.attributes?.field_kicker_headline_1);
+  setZigzagHexaCardData(result.data.data.relationships?.field_card_components_1?.data);
+  setTitleData(result.data.data.attributes?.field_title_1);
+  setSvg(result.data.data.attributes?.field_svg_code_component?.value);
+  setLoading(false);
+};
+
+export const getZigzagCardsData = async (setFieldTitle,setFieldDescription,setBtnUrl,setBtnTitle,setImgUrl,componentType,componentID,setLoading) => {
+  const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
+  setFieldTitle(result.data.data.attributes?.field_card_title);
+  setFieldDescription(result.data.data.attributes?.field_card_description?.value);
+  setBtnUrl(result.data.data.attributes?.field_card_button?.uri);
+  setBtnTitle(result.data.data.attributes?.field_card_button?.title);
+  const imgApi =(result.data.data.relationships?.field_card_image?.links?.related?.href);
+  if(imgApi){
+    const resultImg = await axios.get(imgApi);
+    const imgName = resultImg.data.data?.attributes?.name;
+    const imgFullDate = resultImg.data.data?.attributes?.created;
+    const imgDate = new Date(imgFullDate);
+    const imgYear = imgDate.getFullYear();
+    const imgMonth = ("0" + (imgDate.getMonth() + 1)).slice(-2);
+    if (imgName && imgFullDate) {
+      setImgUrl(`${DRUPAL_API_ENDPOINT}/sites/default/files/${imgYear}-${imgMonth}/${imgName}`);
+    } else {
+      setImgUrl(DRUPAL_API_ENDPOINT + "/sites/default/files/2022-12/Basel-3703.jpg");
+    }
+  }
+  setLoading(false);
+};
+
+export const getZigzagTriCardSingleData = async (setFieldTitle,setFieldDescription,setBtnUrl,setBtnTitle,setImgUrl,componentType,componentID,setLoading) => {
+  const result = await axios.get(DRUPAL_API_ENDPOINT +FETCH_SPECIFIC_COMPONENT +componentType +"/" +componentID);
+  setFieldTitle(result.data.data.attributes?.field_card_title);
+  setFieldDescription(result.data.data.attributes?.field_card_description?.value);
+  setBtnUrl(result.data.data.attributes?.field_card_button?.uri);
+  setBtnTitle(result.data.data.attributes?.field_card_button?.title);
+  const imgApi =(result.data.data.relationships?.field_card_image?.links?.related?.href);
+  if(imgApi){
+    const resultImg = await axios.get(imgApi);
+    const imgName = resultImg.data.data?.attributes?.name;
+    const imgFullDate = resultImg.data.data?.attributes?.created;
+    const imgDate = new Date(imgFullDate);
+    const imgYear = imgDate.getFullYear();
+    const imgMonth = ("0" + (imgDate.getMonth() + 1)).slice(-2);
+    if (imgName && imgFullDate) {
+      setImgUrl(`${DRUPAL_API_ENDPOINT}/sites/default/files/${imgYear}-${imgMonth}/${imgName}`);
+    } else {
+      setImgUrl(DRUPAL_API_ENDPOINT + "/sites/default/files/2022-12/Basel-3703.jpg");
+    }
+  }
+  setLoading(false);
+};
+
 

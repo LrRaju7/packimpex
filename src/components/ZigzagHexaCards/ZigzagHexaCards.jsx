@@ -1,55 +1,61 @@
+import React, { useEffect, useState } from "react";
 import styles from "../ZigzagHexaCards/ZigzagHexaCards.module.css";
+import stylesZigzagCards from "../ZigzagHexaCards/ZigzagHexaCards.module.css";
 import ZigzagCards from "./ZigzagCards";
-import { useEffect } from "react";
-import axios from "axios";
-import { useState } from "react";
+import { getZigzagHexaCardsData } from "../../api/getData";
+import { THREE_CARD_COMPONENT_WITH_KICKER } from "../../constants/componentTypes";
 
 const ZigzagHexaCards = ({componentID}) => {
+  const [loading, setLoading] = useState(true);
   const [headlineData, setHeadlineData] = useState(null);
   const [titleData, setTitleData] = useState(null);
+  const [zigzagHexaCardData, setZigzagHexaCardData] = useState(null);
   const [svg, setSvg] = useState(null);
 
   useEffect(() => {
-    const baseURL = "https://dev-innoways.managedcoder.com/";
-    const apiURL =
-      baseURL + "jsonapi/paragraph/three_card_component_with_kicker/";
-    axios
-      .get(apiURL + componentID)
-      .then((response) => {
-        setHeadlineData(response.data.data.attributes?.field_kicker_headline_1);
-        setTitleData(response.data.data.attributes?.field_title_1);
-        setSvg(response.data.data.attributes?.field_svg_code_component?.value);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    getZigzagHexaCardsData(setHeadlineData,setTitleData,setZigzagHexaCardData,setSvg,THREE_CARD_COMPONENT_WITH_KICKER,componentID,setLoading);
   }, []);
 
   return (
     <>
-      <div className={`${styles.hexa__card__container}`}>
-        {headlineData && titleData && (
-          <div className={`container ${styles.tricard__title__area}`}>
-            <div className={`row align-items-right`}>
-              <div className="col-md-6"></div>
-              <div className="col-lg-6 col-md-12">
-                <span>{headlineData}</span>
-                <h6>{titleData}</h6>
-              </div>
-            </div>
-            <ZigzagCards componentID={componentID}/>
-          </div>
-        )}
-      </div>
-
-      {svg !== null && (
+      {loading ? null : (
         <>
-          <div
-            className={styles.svg__block__1__up}
-            dangerouslySetInnerHTML={{
-              __html: svg,
-            }}
-          />
+          <div className={`${styles.hexa__card__container}`}>
+            {headlineData && titleData && (
+              <div className={`container ${styles.tricard__title__area}`}>
+                <div className={`row align-items-right`}>
+                  <div className="col-md-6"></div>
+                  <div className="col-lg-6 col-md-12">
+                    <span>{headlineData}</span>
+                    <h6>{titleData}</h6>
+                  </div>
+                </div>
+                <div className={` ${stylesZigzagCards.cardWithTitleImageDescButton__container}`}>
+                  <div className={` ${stylesZigzagCards.card__container}`}>
+                    {zigzagHexaCardData &&
+                      zigzagHexaCardData.map(
+                      (data) => {
+                        return (
+                          <ZigzagCards componentID={data.id}/>
+                        );
+                      }
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {svg !== null && (
+            <>
+              <div
+                className={styles.svg__block__1__up}
+                dangerouslySetInnerHTML={{
+                  __html: svg,
+                }}
+              />
+            </>
+          )}
         </>
       )}
     </>

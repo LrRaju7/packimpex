@@ -86,7 +86,7 @@ function ImageTextLeftRight({ componentID, isFirst, isLast }) {
   return (
     <>
       <div className={`${isLast && "pb-100"}`}>
-        {isFirst && position === "right" && (
+        {/* {isFirst && position === "right" && (
           <div
             className="top-line steps"
             style={{
@@ -122,7 +122,7 @@ function ImageTextLeftRight({ componentID, isFirst, isLast }) {
               </div>
             </div>
           </div>
-        )}
+        )} */}
         {loading ? null : (
           <>
             {position === "right" ? (
@@ -140,7 +140,9 @@ function ImageTextLeftRight({ componentID, isFirst, isLast }) {
                             __html: description.substring(0, 100) + "...",
                           }}
                         />
-                        <button className="btn__green">{link}</button>
+                        <button onClick={setModalOpen} className="btn__green">
+                          {link}
+                        </button>
                       </>
                     ) : (
                       <>
@@ -162,7 +164,7 @@ function ImageTextLeftRight({ componentID, isFirst, isLast }) {
                   <Modal
                     isOpen={modalOpen}
                     onRequestClose={() => setModalOpen(false)}
-                    style={styles.customStyles}
+                    style={customStyles}
                   >
                     <div className={styles.close__button}>
                       <button

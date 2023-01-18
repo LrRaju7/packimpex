@@ -1,6 +1,5 @@
 import React , { useEffect, useState } from 'react';
 import styles from "../CardSlider/CardSlider.module.css";
-import axios from 'axios';
 import { getCardSliderData } from '../../api/getData';
 import { CONTENT_COMPONENT_FOUR_CARD } from '../../constants/componentTypes';
 

@@ -11,15 +11,18 @@
   line-height: 90px;
   text-align: center;
 }
-
+.cardSlider_title_contents {
+  padding: 0 25px;
+}
 @media screen and (max-width: 768px) {
   .cardSlider__title h3 {
-    font-size: 40px;
-    line-height: 48px;
+    font-size: 68px;
+    line-height: 80px;
   }
 }
 @media screen and (max-width: 425px) {
   .cardSlider__title h3 {
-    font-size: 30px;
+    font-size: 40px;
+    line-height: 45px;
   }
 }

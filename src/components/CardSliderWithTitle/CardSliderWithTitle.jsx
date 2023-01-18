@@ -1,5 +1,6 @@
-import React , { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import styles from "../CardSliderWithTitle/CardSliderWithTitle.module.css";
+import stylesCardSlider from "../CardSlider/CardSlider.module.css";
 import CardSlider from "../CardSlider/CardSlider";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -23,7 +24,7 @@ const CardSliderWithTitle = ({ componentID }) => {
           <div className={`container`}>
             <h3 className={`${styles.cardSlider__title}`}>{headerData}</h3>
             <Swiper
-              className={`container ${styles.cardSlider__container}`}
+              className={`container ${stylesCardSlider.cardSlider__container}`}
               // install Swiper modules
               modules={[Pagination]}
               spaceBetween={40}
@@ -41,7 +42,7 @@ const CardSliderWithTitle = ({ componentID }) => {
                     return (
                       <SwiperSlide
                         key={index}
-                        className={`${styles.cardSlider__area}`}
+                        className={`${stylesCardSlider.cardSlider__area}`}
                       >
                         <CardSlider componentID={data.id} />
                       </SwiperSlide>

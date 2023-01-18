@@ -3,7 +3,7 @@
   color: #363635;
   padding-bottom: 20px;
   line-height: 58px;
-  font-weight: 600;
+  font-weight: bold;
 }
 .description__container p {
   margin: 20px 35px 20px 35px;
@@ -15,5 +15,8 @@
   .description__container h2 {
     font-size: 40px;
     line-height: 48px;
+  }
+  .content__area p {
+    margin: 20px 0;
   }
 }

@@ -27,6 +27,8 @@ const Page = ({ locator, pageID }) => {
   const [pageAttributes, setPageAttributes] = useState(null);
   const [pageBreadcrumb, setPageBreadcrumb] = useState(false);
   const [pageBreadcrumbData, setPageBreadcrumbData] = useState(null);
+  var firstIndex = 0;
+  var lastIndex = 0;
 
   useEffect(() => {
     setPageData(null);
@@ -39,70 +41,87 @@ const Page = ({ locator, pageID }) => {
       setLoading
     );
   }, [locator, pageID]);
+  if (pageData) {
+    firstIndex = pageData.data.findIndex((item) =>
+      item.type.match(TWO_COLUMN_COMPONENT_YEAR_TITLE)
+    );
+    lastIndex =
+      pageData.data.filter((item) =>
+        item.type.match(TWO_COLUMN_COMPONENT_YEAR_TITLE)
+      ).length - 1;
+  }
   return (
     <>
       {loading ? null : (
         <>
           {pageAttributes !== null ? (
             <Helmet>
-            <meta charSet="utf-8" />
-            <title>
-              {pageAttributes.field_page_meta_tags?.meta_title || pageAttributes.title} | Packimpex
-            </title>
-            <meta
-              name="title"
-              content={pageAttributes.field_page_meta_tags?.meta_title || pageAttributes.title}
-            ></meta>
-            <meta name="description" content={pageAttributes.field_page_description} />
-            <meta property="og:type" content="website" />
-            <meta
-              property="og:title"
-              content={pageAttributes.field_page_meta_tags?.meta_title || pageAttributes.title}
-            />
-            <meta
-              property="og:description"
-              content={pageAttributes.field_page_description}
-            />
-          </Helmet>
-          ): null}
+              <meta charSet="utf-8" />
+              <title>
+                {pageAttributes.field_page_meta_tags?.meta_title ||
+                  pageAttributes.title}{" "}
+                | Packimpex
+              </title>
+              <meta
+                name="title"
+                content={
+                  pageAttributes.field_page_meta_tags?.meta_title ||
+                  pageAttributes.title
+                }
+              ></meta>
+              <meta
+                name="description"
+                content={pageAttributes.field_page_description}
+              />
+              <meta property="og:type" content="website" />
+              <meta
+                property="og:title"
+                content={
+                  pageAttributes.field_page_meta_tags?.meta_title ||
+                  pageAttributes.title
+                }
+              />
+              <meta
+                property="og:description"
+                content={pageAttributes.field_page_description}
+              />
+            </Helmet>
+          ) : null}
           {pageData.data.length > 0 ? (
             <>
               {pageData.data.map((data) => {
                 return (
                   <>
-                    {(data.type.match(BANNER_WITH_TITLE_IMAGE) && (
+                    {data.type.match(BANNER_WITH_TITLE_IMAGE) && (
                       <Banner componentID={data.id} />
-                    ))}
+                    )}
                   </>
                 );
               })}
               {pageBreadcrumb ? (
-                <nav aria-label="breadcrumb">
-                  <ol className="breadcrumb">
-                    <>
-                      {pageBreadcrumbData.map((data) => {
-                        return(
-                          <Breadcrumb id={data.id}/> 
-                        )
-                      })}
-                    </>
-                  </ol>
-                </nav>
-                ) : (
-                  null
-                )
-              }
+                <div className="container pt-5">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <>
+                        {pageBreadcrumbData.map((data) => {
+                          return <Breadcrumb id={data.id} />;
+                        })}
+                      </>
+                    </ol>
+                  </nav>
+                </div>
+              ) : null}
               {pageData.data.map((data, index) => {
                 return (
                   <>
                     {(data.type.match(CONTENT_COMPONENT_WITH_IMAGE_TITLE) && (
-                        <BannerWithTitleDescButton componentID={data.id} />
-                      )) ||
+                      <BannerWithTitleDescButton componentID={data.id} />
+                    )) ||
                       (data.type.match(TWO_COLUMN_COMPONENT_YEAR_TITLE) && (
                         <ImageTextLeftRight
                           componentID={data.id}
-                          isFirst={index === 1}
-                          isLast={pageData.data.length - index === 4}
+                          isFirst={index === firstIndex}
+                          isLast={index === firstIndex + lastIndex}
                         />
                       )) ||
                       (data.type.match(CONTENT_COMPONENT_WITH_TITLE) && (
@@ -126,8 +145,7 @@ const Page = ({ locator, pageID }) => {
               {locator === "/" ? <></> : null}
             </>
           ) : (
-            <>
-            </>
+            <></>
           )}
         </>
       )}
