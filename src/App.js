@@ -15,12 +15,12 @@ function App() {
   const [selectedLanguage, setSelectedLanguage] = useState('default');
   const [selectedCountry, setSelectedCountry] = useState('default');
   window.tryToLoadFromSite = (item) => {
-    if (item.src.includes("https://packimpex-cms.zmallplanet.com") == false) {
+    if (item.src.includes("https://dev-innoways.managedcoder.com") == false) {
       let origSrc = item.src;
       if (origSrc.includes(window.location.origin)) {
         origSrc = origSrc.replace(window.location.origin, "");
       }
-      item.src = "https://packimpex-cms.zmallplanet.com/" + origSrc;
+      item.src = "https://dev-innoways.managedcoder.com/" + origSrc;
     }
   };
   useEffect(() => {

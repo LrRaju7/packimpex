@@ -28,7 +28,7 @@ export default function MenuItemTitleIcon(props) {
         <div className="row">
           <div className="col-lg-3">
             <div className="map-icon">
-            { (componentDetail?.relationships?.field_mega_menu_icon?.data?.id) ? <Image type="file" baseurl='https://packimpex-cms.zmallplanet.com/' imageid={componentDetail?.relationships?.field_mega_menu_icon?.data?.id}></Image> : null }
+            { (componentDetail?.relationships?.field_mega_menu_icon?.data?.id) ? <Image type="file" baseurl='https://dev-innoways.managedcoder.com/' imageid={componentDetail?.relationships?.field_mega_menu_icon?.data?.id}></Image> : null }
             </div>
           </div>
           <div className="col-lg-9 text-left">
