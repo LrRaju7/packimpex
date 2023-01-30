@@ -1,0 +1,11 @@
+import '../../assets/theme/packimpex/css/bootstrap.css'
+import '../../assets/theme/packimpex/css/bootstrap-icons.css'
+import '../../assets/theme/packimpex/css/fonts.css'
+import '../../assets/theme/packimpex/css/header-and-footer.css'
+import '../../assets/theme/packimpex/css/common.css'
+import '../../assets/theme/packimpex/css/reset.min.css'
+import "../../assets/theme/packimpex/css/newsroom.css"
+import "../../assets/theme/packimpex/css/about-us.css"
+import '../../assets/theme/packimpex/css/our_history_svg.css'
+import '../../assets/theme/packimpex/css/history.css'
+import '../../assets/theme/packimpex/css/animate.css'

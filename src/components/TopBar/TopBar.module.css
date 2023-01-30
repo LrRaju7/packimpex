@@ -1,0 +1,33 @@
+.topbar {
+  background-color: #f6f6f6;
+  padding: 10px 0px 10px 0px;
+  max-width: 1440px;
+  margin: auto;
+}
+.topbar p {
+  color: #636362;
+  font-size: 14px;
+  margin: 0;
+}
+.topbar select {
+  display: inline-block !important;
+  margin-right: 1rem;
+  padding: 8px;
+  font-size: 14px;
+  background-color: #f6f6f6;
+  width: 55%;
+}
+.topbar__btn {
+  padding: 11px !important;
+}
+.close__btn {
+  background: transparent;
+  font-weight: bold;
+  margin-left: 5rem;
+  font-size: 14px;
+}
+@media (max-width: 900px) {
+  .topbar select {
+    width: 50%;
+  }
+}

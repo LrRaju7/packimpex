@@ -4,19 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { getImageTextLeftRightData } from "../../api/getData";
 import { TWO_COLUMN_COMPONENT_YEAR_TITLE } from "../../constants/componentTypes";
 import styles from "../ImageTextLeftRight/ImageTextLeftRight.module.css";
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "white",
-    width: "55%",
-    textAlign: "center",
-  },
-};
 
 function ImageTextLeftRight({ componentID, isFirst, isLast }) {
   const [loading, setLoading] = useState(true);
@@ -129,7 +116,7 @@ function ImageTextLeftRight({ componentID, isFirst, isLast }) {
               <div
                 className={`container ${styles.imagetextleftright__container}`}
               >
-                <div className="row align-items-center">
+                <div className={`row align-items-center ${styles.mb__10}`}>
                   <div className="col-md-6">
                     <span className={styles.year}>{year}</span>
                     <h2>{title}</h2>
@@ -140,7 +127,10 @@ function ImageTextLeftRight({ componentID, isFirst, isLast }) {
                             __html: description.substring(0, 100) + "...",
                           }}
                         />
-                        <button onClick={setModalOpen} className="btn__green">
+                        <button
+                          onClick={setModalOpen}
+                          className="btn__green mb-4 mt-3"
+                        >
                           {link}
                         </button>
                       </>
@@ -164,7 +154,6 @@ function ImageTextLeftRight({ componentID, isFirst, isLast }) {
                   <Modal
                     isOpen={modalOpen}
                     onRequestClose={() => setModalOpen(false)}
-                    style={customStyles}
                   >
                     <div className={styles.close__button}>
                       <button
@@ -232,7 +221,9 @@ function ImageTextLeftRight({ componentID, isFirst, isLast }) {
               <div
                 className={`container ${styles.imagetextleftright__container}`}
               >
-                <div className="row align-items-center">
+                <div
+                  className={`row align-items-center ${styles.mb__10} ${styles.reverse}`}
+                >
                   <div className="col-md-6">
                     <img
                       className={styles.style__img}
@@ -250,7 +241,10 @@ function ImageTextLeftRight({ componentID, isFirst, isLast }) {
                             __html: description.substring(0, 100) + "...",
                           }}
                         />
-                        <button onClick={setModalOpen} className="btn__green">
+                        <button
+                          onClick={setModalOpen}
+                          className="btn__green mb-4 mt-3"
+                        >
                           {link}
                         </button>
                       </>
@@ -267,7 +261,6 @@ function ImageTextLeftRight({ componentID, isFirst, isLast }) {
                   <Modal
                     isOpen={modalOpen}
                     onRequestClose={() => setModalOpen(false)}
-                    style={customStyles}
                   >
                     <div className={styles.close__button}>
                       <button

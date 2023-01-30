@@ -1,0 +1,610 @@
+body {
+    font-family: ManropeRegular; background: #fff; color:#363635; font-size: 18px; letter-spacing: 1px;
+}
+@font-face {
+    font-family: "ManropeRegular";
+    src: url(../fonts/ManropeRegular.ttf) format("ttf"),
+    url(../fonts/ManropeRegular.eot) format("eot"),
+	url(../fonts/ManropeRegular.svg) format("svg"),
+	url(../fonts/ManropeRegular.woff) format("woff"),
+	url(../fonts/ManropeRegular.woff2) format("woff2");
+}
+@font-face {
+    font-family: "ManropeBold";
+    src: url(../fonts/ManropeBold.ttf) format("ttf"),
+    url(../fonts/ManropeBold.eot) format("eot"),
+	url(../fonts/ManropeBold.svg) format("svg"),
+	url(../fonts/ManropeBold.woff) format("woff"),
+	url(../fonts/ManropeBold.woff2) format("woff2");
+}
+@font-face {
+	font-display:swap;
+	font-family:'icomoon';
+	src:url('../fonts/icomoon.eot?tqmuce');
+	src:url('../fonts/icomoon.eot?tqmuce#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?tqmuce') format('truetype'),
+		url('../fonts/icomoon.woff?tqmuce') format('woff');
+	font-weight:400;
+	font-style:normal
+}
+.font88{font-size: 88px !important; line-height: 98px !important;}
+[class^="icon-"],
+[class*=" icon-"] {
+    font-family: 'icomoon'!important;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.footer_social a {
+    text-decoration: none;
+	
+}
+
+.footer_social .footer_icon {
+    display: inline-block;
+    margin-right: 5px;
+    text-align: center;
+}
+
+.footer_social .footer_icon span {
+    color: #363635;
+    font-size: 35px;
+}
+.footer_social .footer_icon span:hover{color: #007F8F}
+.icon-linkedin:before {
+    content: "\e912";
+}
+
+.icon-facebook:before {
+    content: "\e909";
+}
+
+.icon-twitter:before {
+    content: "\e922";
+}
+
+.icon-youtube:before {
+    content: "\e950";
+}
+
+.icon-xing:before {
+	content: "\e94f";
+	
+}
+
+
+.icon-icon-rental-furniture_1:before {
+	content: "\e93d"
+}
+
+.icon-icon-rental-furniture_2:before {
+	content: "\e93e"
+}
+
+.icon-icon-temp-housing-2:before {
+	content: "\e93f"
+}
+
+.icon-icon-temp-housing-3:before {
+	content: "\e940"
+}
+
+.icon-icon-temp-housing-1:before {
+	content: "\e941"
+}
+
+.icon-icon-immigration-7:before {
+	content: "\e942"
+}
+
+.icon-icon-immigration-6:before {
+	content: "\e943"
+}
+
+.icon-icon-immigration-5:before {
+	content: "\e944"
+}
+
+.icon-icon-immigration-4:before {
+	content: "\e945"
+}
+
+.icon-icon-immigration-3:before {
+	content: "\e946"
+}
+
+.icon-icon-immigration-2:before {
+	content: "\e947"
+}
+
+.icon-icon-immigration-1:before {
+	content: "\e948"
+}
+
+.icon-icon-immigration-61:before {
+	content: "\e949"
+}
+
+.icon-icon-immigration-51:before {
+	content: "\e94a"
+}
+
+.icon-icon-immigration-41:before {
+	content: "\e94b"
+}
+
+.icon-icon-immigration-31:before {
+	content: "\e94c"
+}
+
+.icon-icon-immigration-21:before {
+	content: "\e94d"
+}
+
+.icon-icon-immigration-11:before {
+	content: "\e94e"
+}
+
+.icon-calendar:before {
+	content: "\e900"
+}
+
+.icon-basic-package:before {
+	content: "\e901"
+}
+
+.icon-car-relocation:before {
+	content: "\e902"
+}
+
+.icon-new-tennant:before {
+	content: "\e903"
+}
+
+.icon-cross-in-circle-outline:before {
+	content: "\e904"
+}
+
+.icon-cross-in-circle:before {
+	content: "\e905"
+}
+
+.icon-cross:before {
+	content: "\e906"
+}
+
+.icon-drop-down-arrow:before {
+	content: "\e907"
+}
+
+.icon-edit:before {
+	content: "\e908"
+}
+
+.icon-facebook:before {
+	content: "\e909"
+}
+
+.icon-pet-relocation:before {
+	content: "\e90a"
+}
+
+.icon-home-search-plus-sml:before {
+	content: "\e90b"
+}
+
+.icon-home-search-sml:before {
+	content: "\e90c"
+}
+
+.icon-home-search2:before {
+	content: "\e90d"
+}
+
+.icon-home-viewings:before {
+	content: "\e90e"
+}
+
+.icon-immigration:before {
+	content: "\e90f"
+}
+
+.icon-info:before {
+	content: "\e910"
+}
+
+.icon-prep-to-move-out:before {
+	content: "\e911"
+}
+
+.icon-linkedin1:before {
+	content: "\e912"
+}
+
+.icon-property-showing:before {
+	content: "\e913"
+}
+
+.icon-move-from-switzerland:before {
+	content: "\e914"
+}
+
+.icon-move-to-switzerland:before {
+	content: "\e915"
+}
+
+.icon-moving-employees:before {
+	content: "\e916"
+}
+
+.icon-repairs-refunds:before {
+	content: "\e917"
+}
+
+.icon-arrival-service:before {
+	content: "\e918"
+}
+
+.icon-play-video:before {
+	content: "\e919"
+}
+
+.icon-property-market-popup:before {
+	content: "\e91a"
+}
+
+.icon-departure-services:before {
+	content: "\e91b"
+}
+
+.icon-destination-services:before {
+	content: "\e91c"
+}
+
+.icon-destination-services-home-search:before {
+	content: "\e91d"
+}
+
+.icon-select-services:before {
+	content: "\e91e"
+}
+
+.icon-education-childcare:before {
+	content: "\e91f"
+}
+
+.icon-extended-transport-insurance:before {
+	content: "\e920"
+}
+
+.icon-tick-box:before {
+	content: "\e921"
+}
+
+.icon-twitter:before {
+	content: "\e922"
+}
+
+.icon-untick-box:before {
+	content: "\e923"
+}
+
+.icon-home-search:before {
+	content: "\e924"
+}
+
+.icon-icon-left-arrow:before {
+	content: "\e925"
+}
+
+.icon-icon-right-arrow:before {
+	content: "\e926"
+}
+
+.icon-icon-sales-person:before {
+	content: "\e927"
+}
+
+.icon-icon-tick:before {
+	content: "\e928"
+}
+
+.icon-household-goods-removal:before {
+	content: "\e929"
+}
+
+.icon-immigration-services:before {
+	content: "\e92a"
+}
+
+.icon-moving-services:before {
+	content: "\e92b"
+}
+
+.icon-orietation-tour:before {
+	content: "\e92c"
+}
+
+.icon-secure-storage:before {
+	content: "\e92d"
+}
+
+.icon-settling-in:before {
+	content: "\e92e"
+}
+
+.icon-temporary-apartment:before {
+	content: "\e92f"
+}
+
+.icon-temporary-furniture:before {
+	content: "\e930"
+}
+
+.icon-temporary-housing:before {
+	content: "\e931"
+}
+
+.icon-temporary-living-services:before {
+	content: "\e932"
+}
+
+.icon-experience:before {
+	content: "\e933"
+}
+
+.icon-families:before {
+	content: "\e934"
+}
+
+.icon-homepage-corporate:before {
+	content: "\e935"
+}
+
+
+.icon-homepage-private:before {
+	content: "\e936"
+}
+
+.icon-instant-quote:before {
+	content: "\e937"
+}
+
+.icon-market-leader:before {
+	content: "\e938"
+}
+
+.icon-move-managers:before {
+	content: "\e939"
+}
+
+.icon-basic-package:before {
+	content: "\e901"
+}
+
+.icon-car-relocation:before {
+	content: "\e902"
+}
+
+.icon-new-tennant:before {
+	content: "\e903"
+}
+
+.icon-pet-relocation:before {
+	content: "\e90a"
+}
+
+.icon-prep-to-move-out:before {
+	content: "\e911"
+}
+
+.icon-property-showing:before {
+	content: "\e913"
+}
+
+.icon-repairs-refunds:before {
+	content: "\e917"
+}
+
+.icon-icon-left-arrow:before {
+	content: "\e925"
+}
+
+.icon-icon-right-arrow:before {
+	content: "\e926"
+}
+
+.icon-icon-sales-person:before {
+	content: "\e927"
+}
+
+.icon-icon-tick:before {
+	content: "\e928"
+}
+
+.icon-calendar:before {
+	content: "\e900"
+}
+
+.icon-cross-in-circle-outline:before {
+	content: "\e904"
+}
+
+.icon-cross-in-circle:before {
+	content: "\e905"
+}
+
+.icon-cross:before {
+	content: "\e906"
+}
+
+.icon-drop-down-arrow:before {
+	content: "\e907"
+}
+
+.icon-edit:before {
+	content: "\e908"
+}
+
+.icon-facebook:before {
+	content: "\e909"
+}
+
+.icon-home-search-plus-sml:before {
+	content: "\e90b"
+}
+
+.icon-home-search-sml:before {
+	content: "\e90c"
+}
+
+.icon-home-search2:before {
+	content: "\e90d"
+}
+
+.icon-home-viewings:before {
+	content: "\e90e"
+}
+
+.icon-immigration:before {
+	content: "\e90f"
+}
+
+.icon-info:before {
+	content: "\e910"
+}
+
+.icon-linkedin:before {
+	content: "\e912"
+}
+
+.icon-move-from-switzerland:before {
+	content: "\e914"
+}
+
+.icon-move-to-switzerland:before {
+	content: "\e915"
+}
+
+.icon-moving-employees:before {
+	content: "\e916"
+}
+
+.icon-play-video:before {
+	content: "\e919"
+}
+
+.icon-property-market-popup:before {
+	content: "\e91a"
+}
+
+.icon-select-services:before {
+	content: "\e91e"
+}
+
+.icon-tick-box:before {
+	content: "\e921"
+}
+
+.icon-twitter:before {
+	content: "\e922"
+}
+
+.icon-untick-box:before {
+	content: "\e923"
+}
+
+.icon-arrival-service:before {
+	content: "\e918"
+}
+
+.icon-departure-services:before {
+	content: "\e91b"
+}
+
+.icon-destination-services:before {
+	content: "\e91c"
+}
+
+.icon-destination-services-home-search:before {
+	content: "\e91d"
+}
+
+.icon-education-childcare:before {
+	content: "\e91f"
+}
+
+.icon-extended-transport-insurance:before {
+	content: "\e920"
+}
+
+.icon-home-search:before {
+	content: "\e924"
+}
+
+.icon-household-goods-removal:before {
+	content: "\e929"
+}
+
+.icon-immigration-services:before {
+	content: "\e92a"
+}
+
+.icon-moving-services:before {
+	content: "\e92b"
+}
+
+.icon-orietation-tour:before {
+	content: "\e92c"
+}
+
+.icon-secure-storage:before {
+	content: "\e92d"
+}
+
+.icon-settling-in:before {
+	content: "\e92e"
+}
+
+.icon-temporary-apartment:before {
+	content: "\e92f"
+}
+
+.icon-temporary-furniture:before {
+	content: "\e930"
+}
+
+.icon-temporary-housing:before {
+	content: "\e931"
+}
+
+.icon-temporary-living-services:before {
+	content: "\e932"
+}
+
+.icon-Superhero:before {
+	content: "\e93a"
+}
+
+.icon-Team_Player:before {
+	content: "\e93b"
+}
+
+.icon-VIP:before {
+	content: "\e93c"
+}
+
+.icon-xing:before {
+	content: "\e94f";
+
+}
+
+.icon-youtube:before {
+	content: "\e950";
+
+}

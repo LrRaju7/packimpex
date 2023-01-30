@@ -1,0 +1,24 @@
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spinner__background {
+  background-color: var(--color-bg-primary);
+}
+.spinner__border__color {
+  border: 6px solid var(--color-bg-primary);
+  border-right-color: transparent;
+}
+@media (max-width: 992px) {
+  .spinner__background,
+  .spinner__border__color {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+}

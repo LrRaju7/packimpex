@@ -1,0 +1,225 @@
+.btn-primary {
+    border-color: #a3ba00;
+    background: #a3ba00;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:visited,
+.btn-primary:checked,
+.btn-primary:disabled,
+.btn-primary:link,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+    border-color: #656565;
+    background: #656565;
+}
+
+.btn-outline-primary {
+    border: 1px solid #a3ba00;
+    color: #656565
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:focus,
+.btn-outline-primary:visited,
+.btn-outline-primary:checked,
+.btn-outline-primary:link,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-primary.dropdown-toggle {
+    border-color: #a3ba00;
+    background: #a3ba00;
+    color: #fff;
+}
+
+.btn {
+    border-radius: 0;
+    transition: .6s;
+    min-width: 190px;
+    max-width: 350px;
+    min-height: 50px;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn:visited {
+    outline: none;
+    box-shadow: none !important;
+}
+
+h1 {
+    font: inherit;
+}
+
+.module-wrap .btn-outline-primary{
+    text-transform: uppercase;
+}
+
+
+/* layui 样式重置 */
+.layui-input-block{
+    margin-left: 0;
+}
+
+.layui-form-radio:hover *, .layui-form-radioed, .layui-form-radioed>i{
+    color: #a3ba00;
+}
+.layui-form-radio{
+    margin: 0;
+}
+
+.laydate-time-list p{
+    margin-bottom: 0 !important;
+}
+
+.layui-form-checked[lay-skin=primary] i{
+    background-color: #a3ba00;
+    border-color: #a3ba00 !important;
+}
+
+.layui-icon-ok:before{
+    color: #fff;
+}
+.layui-input, .layui-textarea{
+    width: 100%;
+    border: 1px solid #d1d1d0;
+    padding: 0 25px;
+    height: 62px;
+    line-height: 62px;
+    margin-top: 0;
+    border-radius: 2px;
+	    background: #f6f6f6;
+}
+.layui-form-select{
+    margin-top: 15px;
+}
+.layui-input:focus, .layui-textarea:focus{
+    border: 1px solid #a3ba00 !important;
+}
+.layui-card-body, .layui-card-header, .layui-form-label, .layui-form-mid, .layui-form-select, .layui-input-block, .layui-input-inline, .layui-panel, .layui-textarea{
+    width: 100%;
+}
+
+.layui-form-select dl{
+   /* top: 62px*/
+}
+
+.layui-form-select dl dd.layui-this,.layui-form-select ul li.layui-this{
+    background-color: #a3ba00;
+    color: #fff
+}
+
+.layui-form-checkbox span{
+    white-space:inherit
+}
+
+.hidden-option .layui-anim-upbit{
+    display: none;
+}
+
+.layui-form-select ul {
+    position: absolute;
+    left: 0;
+    top: 62px;
+    padding: 5px 0;
+    z-index: 899;
+    min-width: 100%;
+    border: 1px solid #eee;
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+.select-search-input{
+    margin-top: 0;
+}
+
+/* reset videojs css */
+
+.video-js .vjs-big-play-button {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    background-color: #a3ba00 !important;
+    border: 1px solid #a3ba00 !important;
+}
+
+.video-js .vjs-big-play-button .vjs-icon-placeholder:before {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+}
+
+.video-js .vjs-play-progress {
+    background-color: #a3ba00;
+}
+
+.video-js .vjs-control-bar {
+    /* visibility: visible;
+    display: block; */
+}
+
+.video-js .vjs-volume-panel.vjs-volume-control.vjs-volume-horizontal,
+.video-js .vjs-volume-panel:active .vjs-volume-control.vjs-volume-horizontal,
+.video-js .vjs-volume-panel:focus .vjs-volume-control.vjs-volume-horizontal,
+.video-js .vjs-volume-panel .vjs-volume-control:active.vjs-volume-horizontal,
+.video-js .vjs-volume-panel.vjs-hover .vjs-mute-control~.vjs-volume-control.vjs-volume-horizontal,
+.video-js .vjs-volume-panel .vjs-volume-control.vjs-slider-active.vjs-volume-horizontal {
+    width: 5em;
+    height: 3em;
+    margin-right: 0;
+}
+
+@media (max-width: 768px) {
+    .btn {
+        min-width: 120px;
+        min-height: 50px;
+    }
+}
+
+
+/* // Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 100%
+    }
+}
+
+
+/* // Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 100%
+    }
+}
+
+
+/* // Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 100%
+    }
+}
+
+
+/* // Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1243px) {
+    .container {
+        max-width: 1243px
+    }
+}

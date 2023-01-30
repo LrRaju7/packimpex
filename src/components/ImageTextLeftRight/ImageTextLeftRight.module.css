@@ -30,3 +30,14 @@
   background-color: white;
   font-size: 12px;
 }
+
+@media (max-width: 1300px) {
+  .mb__10 {
+    margin-bottom: 10%;
+  }
+}
+@media (max-width: 767px) {
+  .reverse {
+    flex-direction: column-reverse !important;
+  }
+}

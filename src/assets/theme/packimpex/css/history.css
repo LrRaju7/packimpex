@@ -1,0 +1,143 @@
+.history-box{width: 100%; margin: 0;}
+.content-txt {
+    margin: 20px 35px 20px 35px;
+    line-height: 28px;
+    color: #636362;
+}
+.top-content-box{    max-width: 700px;
+    width: 100%;}
+.banner-img img {width: 100%;}
+.history-item{    display: flex;
+    align-items: center !important;}
+.main-title{margin: 20px 0;}
+.year-txt{color:#A2BB0C; font-weight: bold;font-size: 20px; padding-bottom: 20px }
+.history-item-title{ font-family: 'ManropeBold'; font-size: 30px;  margin: 10px 0;line-height: 40px;}
+.text-line{line-height: 28px;}
+.row-content{padding: 0 50px;}
+
+
+/*********svg-start***********/
+.line_svg_block{text-align: center;}
+	.bg_div{
+		width:800px;
+	    height:auto;
+	}
+	.first_svg{
+		stroke:#A2BB0C;
+		stroke-width:4;
+		stroke-dashoffset:1500;
+		stroke-dasharray:1500;
+		animation: first 3s linear 1s alternate forwards;
+		display: block;
+	}
+	@keyframes first{
+		to{
+			stroke-dashoffset:0;
+		}
+	}
+	.bg_div2{
+		width:500px;
+	    height:auto;
+		margin: 0 auto;
+	}
+	
+	.second_svg{
+		stroke:#A2BB0C;
+		stroke-width:5;
+		stroke-dashoffset:1780;
+		stroke-dasharray:1780;
+		animation: second 5s linear 3s alternate forwards;
+		display: block;
+	}
+	@keyframes second{
+		to{
+			stroke-dashoffset:0;
+		}
+	}
+	
+	.third_svg{
+		stroke:#A2BB0C;
+		stroke-width:5;
+		stroke-dashoffset:1780;
+		stroke-dasharray:1780;
+		animation: third 5s linear 5s alternate forwards;
+		display: block;
+	}
+	@keyframes third{
+		to{
+			stroke-dashoffset:0;
+		}
+	}
+	
+	.fourth_svg{
+		stroke:#A2BB0C;
+		stroke-width:5;
+		stroke-dashoffset:1780;
+		stroke-dasharray:1780;
+		animation: third 5s linear 6s alternate forwards;
+		display: block;
+	}
+	@keyframes fourth{
+		to{
+			stroke-dashoffset:0;
+		}
+	}
+
+  @media (max-width:1650px){
+			.bg_div{
+		width:600px;
+	    height:auto;
+	}
+		
+	}
+   @media (max-width:1300px){
+	.bg_div, .bg_div2{
+		display: none;
+	}
+	.history-item{margin: 40px 0;}
+			
+		
+	}
+
+/*********svg-end***********/
+@media (max-width: 1299px){
+
+	.line_svg_block{
+		display: none;
+	}
+
+
+}
+
+
+@media (max-width: 992px){
+	
+.content-txt { margin: 0;}
+.history-item{display: block;}
+.row-content{padding: 0; margin: 20px 0;}	
+.common-content section:nth-of-type(odd) .history-item{
+	display: flex;
+	flex-direction: column-reverse;
+}
+.common-content section:nth-of-type(even) .history-item{
+	display: flex;
+	flex-direction: column;
+}	
+.year-txt{padding-top: 20px; }
+}
+
+
+
+@media (max-width: 768px){
+	.h100 {
+		height: 30px;
+	}
+	.space-block {
+		padding: 40px 0 0 0;
+	}
+}
+@media (max-width: 500px){
+
+	
+}
+

@@ -31,7 +31,9 @@ p,
 span,
 ul,
 li,
-button {
+button,
+select,
+option {
   font-family: "Manrope", sans-serif;
 }
 :root {
@@ -68,6 +70,8 @@ button {
   padding: 15px;
   text-transform: uppercase;
   font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 14px;
 }
 .btn__green:hover {
   background-color: var(--color-bg-secondary);
@@ -109,6 +113,7 @@ button {
   padding: 6px 12px;
   font-size: 14px;
   text-align: center;
+  letter-spacing: 1px;
 }
 .btn__white:hover {
   background: #a2bb0c;
@@ -116,7 +121,7 @@ button {
   transition: 0.3s;
 }
 
-.btn__white>a {
+.btn__white > a {
   border-radius: 50px;
   background: #fff;
   color: #a2bb0c;
@@ -127,7 +132,7 @@ button {
   text-align: center;
   text-decoration: none;
 }
-.btn__white>a:hover {
+.btn__white > a:hover {
   background: #a2bb0c;
   color: #fff;
   transition: 0.3s;
@@ -378,4 +383,33 @@ button {
 }
 .breadcrumb-item a:hover {
   color: var(--color-text-secondary);
+}
+.ReactModal__Content {
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  margin-right: -50% !important;
+  transform: translate(-50%, -50%) !important;
+  background-color: white !important;
+  width: 50% !important;
+  text-align: center !important;
+  margin-top: 20px !important;
+  z-index: 999;
+}
+.ReactModal__Overlay {
+  z-index: 999;
+}
+.ReactModal__Content h2 {
+  font-weight: 700 !important;
+  margin-top: 3rem;
+}
+.ReactModal__Content p {
+  font-size: 16px;
+  line-height: 25px;
+}
+@media (min-width: 300px) and (max-width: 600px) {
+  .ReactModal__Content {
+    width: 95% !important;
+  }
 }

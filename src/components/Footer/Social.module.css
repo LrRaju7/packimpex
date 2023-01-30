@@ -1,0 +1,38 @@
+/*social midia css start */
+.footer__icon {
+  display: inline-block;
+  margin-right: 25px;
+  text-align: center;
+}
+.social__icons a {
+  background-color: #363635;
+  transition: 0.3s;
+  padding: 6px;
+  border-radius: 50%;
+  line-height: 1;
+}
+.social__icons a:hover {
+  background-color: #007f8f;
+}
+.footer__lag {
+  font-size: 14px;
+  text-align: right;
+}
+.footer__lag span {
+  padding: 0px;
+  margin: 0 5px;
+}
+.footer__lag span a {
+  color: #656564;
+  font-size: 14px;
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  .footer__lag {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .social__icons {
+    text-align: center;
+  }
+}

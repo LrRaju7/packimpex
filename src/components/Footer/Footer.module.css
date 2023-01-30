@@ -1,56 +1,56 @@
 footer {
-    box-shadow: 0 29px 20px 0 rgb(34 41 47 / 8%) inset;
-    background-color: var(--color-bg-white);
-    padding: 5rem 0 0 0;
-  }
-  footer .footer__title {
-    font-size: 24px;
-    color: var(--color-text-dark);
-    margin-bottom: 40px !important;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-  footer ul li {
-    color: var(--color-text-primary);
-    font-size: 18px;
-    display: flex;
-    margin: 16px 0;
-    font-weight: bold;
-  }
-  
-  .footer__top ul li a {
-    text-decoration: none !important;
-    color: var(--color-text-primary);
-  }
-  .footer__top ul li a:hover {
-    color: var(--color-text-secondary);
-    transition: 0.5s;
-  }
-  
-  footer ul li a:hover {
-    color: var(--color-text-secondary);
-  }
-  footer ul {
-    padding: 0;
-  }
-  .footer__bottom {
-    background-color: #fff;
-    border-top: 1px solid #f6f6f6;
-    padding: 30px 0;
-  }
-  .footer__bottom ul {
-    display: flex;
-    justify-content: right;
-  }
-  .footer__bottom ul li {
-    margin-right: 2rem;
-  }
-  .footer__bottom ul li a {
-    color: var(--color-text-dark);
-    font-size: 16px;
-    text-decoration: none;
-  }
-  .footer__bottom ul li a:hover {
-    color: var(--color-text-secondary);
-    transition: 0.5s;
-  }
+  box-shadow: 0 29px 20px 0 rgb(34 41 47 / 8%) inset;
+  background-color: var(--color-bg-white);
+  padding: 5rem 0 0 0;
+}
+footer .footer__title {
+  font-size: 24px;
+  color: var(--color-text-dark);
+  margin-bottom: 40px !important;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+footer ul li {
+  color: var(--color-text-primary);
+  font-size: 18px;
+  display: flex;
+  margin: 16px 0;
+  font-weight: bold;
+}
+
+.footer__top ul li a {
+  text-decoration: none !important;
+  color: var(--color-text-primary);
+}
+.footer__top ul li a:hover {
+  color: var(--color-text-secondary);
+  transition: 0.5s;
+}
+
+footer ul li a:hover {
+  color: var(--color-text-secondary);
+}
+footer ul {
+  padding: 0;
+}
+.footer__bottom {
+  background-color: #fff;
+  border-top: 1px solid #f6f6f6;
+  padding: 30px 0;
+}
+.footer__bottom ul {
+  display: flex;
+  justify-content: right;
+}
+.footer__bottom ul li {
+  margin-right: 2rem;
+}
+.footer__bottom ul li a {
+  color: var(--color-text-dark);
+  font-size: 16px;
+  text-decoration: none;
+}
+.footer__bottom ul li a:hover {
+  color: var(--color-text-secondary);
+  transition: 0.5s;
+}

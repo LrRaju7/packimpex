@@ -20,6 +20,7 @@ import ImageTextLeftRight from "../../components/ImageTextLeftRight/ImageTextLef
 import ZigzagTriCard from "../../components/ZigzagTriCard/ZigzagTriCard";
 import Breadcrumb from "../../components/Breadcrumb/Breadcrumb";
 import HtmlEditor from "../../components/HtmlEditor/HtmlEditor";
+import Loader from "../../components/Loader/Loader";
 
 const Page = ({ locator, pageID }) => {
   const [loading, setLoading] = useState(true);
@@ -52,7 +53,9 @@ const Page = ({ locator, pageID }) => {
   }
   return (
     <>
-      {loading ? null : (
+      {loading ? (
+        <Loader />
+      ) : (
         <>
           {pageAttributes !== null ? (
             <Helmet>
@@ -99,7 +102,7 @@ const Page = ({ locator, pageID }) => {
                 );
               })}
               {pageBreadcrumb ? (
-                <div className="container pt-5">
+                <div className="container pt-100">
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                       <>

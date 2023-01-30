@@ -23,19 +23,22 @@ function TitleDescription({ componentID }) {
   return (
     <>
       {loading ? null : (
-        <div className="pxy-100">
-          <div className={`container ${styles.description__container}`}>
-            <div className="row">
-              <div className="col-md-12">
-                <div className="col-lg-9  col-md-12">
-                  <h2>{title}</h2>
-                  <div className={`${styles.content__area}`}>
-                    <p>{description}</p>
+        <>
+          <div className="pxy-100">
+            <div className={`container ${styles.description__container}`}>
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="col-lg-9  col-md-12">
+                    <h2>{title}</h2>
+                    <div className={`${styles.content__area}`}>
+                      <p>{description}</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
           {svg !== null && (
             <>
               <div
@@ -46,7 +49,7 @@ function TitleDescription({ componentID }) {
               />
             </>
           )}
-        </div>
+        </>
       )}
     </>
   );

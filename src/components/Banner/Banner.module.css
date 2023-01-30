@@ -61,9 +61,6 @@
     transform: rotate(45deg) translate(20px, 20px);
   }
 }
-/* .svg__block__1__up {
-  
-} */
 .svg__block__1__up svg {
   fill: #ffff;
   position: absolute;

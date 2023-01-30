@@ -1,11 +1,12 @@
-import React from "react";
-
-function Header() {
+const Header = ({ head, description }) => {
   return (
-    <div>
-      <h2 className="text-center">Header</h2>
-    </div>
-  );
+    <>
+      <div className='starter-template text-center mt-5'>
+        <h1>{head} Page</h1>
+        <p className='lead text-capitalize'>{description}</p>
+      </div>
+    </>
+  )
 }
 
-export default Header;
+export default Header
